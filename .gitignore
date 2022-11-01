@@ -1,3 +1,4 @@
+**/twitter_api_xanda.py
 .DS_Store
 .ipynb_checkpoints/
-**/twitter_api_xanda.py
+__pycache__/
