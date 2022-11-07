@@ -6,12 +6,15 @@ It gets the tweets for each Twitter handle, and potentially the quoted tweets an
 (those can be requested via parameters to the get_tweets_for_user call below)
 Writes each company's tweets to a separate CSV. The CSVs are saved to the folder data/tweets.
 
+Requires tweepy to be installed. If you don't have tweepy, install it with this command:
+pip3 install --user tweepy
+
 To run script:
 ipython
-run getTweets.py sp_500_twitter_subsidiaries_manual_no_duplicates.csv
+run get_tweets.py sp_500_twitter_subsidiaries_manual_no_duplicates.csv
 """
 import tweepy
-from twitter_api_xanda import TWITTER_API_KEY, TWITTER_API_SECRET, TWITTER_API_BEARER
+from twitter_api_xanda import TWITTER_API_BEARER
 import pandas as pd
 import datetime
 import sys
@@ -32,8 +35,9 @@ def check_rate_limit(api_call: str):
         time.sleep(960)
         print("Resettings API_CALLS counts.")
         API_CALLS["get_user"] = 0
+        API_CALLS["get_users"] = 0
         API_CALLS["get_users_tweets"] = 0
-        API_CALLS["get_tweet"] = 0
+        API_CALLS["get_tweets"] = 0
         print(API_CALLS)
 
 def get_tweets_for_user(username: str, num_years: int, get_quoted_tweets: bool, get_retweeted_tweets: bool):
@@ -249,7 +253,7 @@ def parse_context_annotations(tweet):
 
 # To run script:
 # ipython
-# run getTweets.py sp_500_twitter_subsidiaries_manual_no_duplicates.csv
+# run get_tweets.py sp_500_twitter_subsidiaries_manual_no_duplicates.csv
 if __name__ == "__main__":
     output_folder =  'data/tweets/ten_years/'
 
@@ -259,6 +263,6 @@ if __name__ == "__main__":
     twitter_handles = twitter_handle_df["Twitter Handle"].dropna()  # Drop nulls (some companies don't have Twitters)
     for handle in twitter_handles:
         print(f"Getting tweets for {handle}.")
-        company_df = get_tweets_for_user(handle, 10, True, True) # Last 2 params mean with quoted tweets and retweeted tweets
-        company_df.drop_duplicates(subset=['tweet_id'])          # In case companies retweet or quote tweet themselves
+        company_df = get_tweets_for_user(handle, num_years=10, get_quoted_tweets=True, get_retweeted_tweets=True)
+        company_df.drop_duplicates(subset=['tweet_id']) # In case companies retweet or quote tweet themselves
         company_df.to_csv(f"{output_folder}{handle}_tweets.csv")
