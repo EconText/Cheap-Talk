@@ -1,6 +1,7 @@
 """
-This script generates some a CSV of the number of tweets per year by companu in our dataset.
-Saves that CSV to the data/tweets/metadata folder.
+This script generates CSVs of the number of tweets per year by company in our dataset.
+Generates one CSV for all tweets, one for regular tweets, one for quote tweets, and one for retweeted tweets.
+Saves those CSVs to the data/tweets/metadata folder.
 
 To run script:
 ipython
@@ -44,7 +45,6 @@ def create_tweet_count_csv(tweet_type_to_count: TweetType, tweet_folder: str, ou
 
 def get_year_counts(filepath: str, tweet_type_to_count: TweetType) -> list:
     tweet_df = pd.read_csv(filepath, lineterminator='\n')
-    print(filepath)
     year_counts = {year: 0 for year in range(2012, 2023)}
     
     for is_quoted_tweet, is_retweeted_tweet, referenced_tweets, created_at in zip(tweet_df["is_quoted_tweet"], tweet_df["is_retweeted_tweet"], tweet_df["referenced_tweets"], tweet_df["created_at"]):
@@ -79,7 +79,9 @@ def get_year_counts(filepath: str, tweet_type_to_count: TweetType) -> list:
             continue
     
     # Remove the "_tweets.csv" suffix from the original filename to get the Twitter handle.
-    twitter_handle = "_".join(filepath.split("_")[:-1]) 
+    
+    twitter_handle = "_".join(filepath.split("/")[-1].split("_")[:-1])
+    print(twitter_handle)
     return [twitter_handle] + [year_counts[year] for year in range(2012, 2023)] + [sum(year_counts.values())]
 
 
@@ -130,5 +132,3 @@ if __name__ == "__main__":
     print()
     print("Counting retweeted tweets")
     create_tweet_count_csv(TweetType.RETWEETED, tweet_folder, output_folder, "retweeted_tweets_per_year.csv")
-    
-     
