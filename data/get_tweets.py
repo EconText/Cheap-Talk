@@ -22,7 +22,7 @@ import time
 
 FIELDS = ["created_at", "text", "public_metrics", "context_annotations", "entities", "referenced_tweets", "author_id"]
 client = tweepy.Client(bearer_token=TWITTER_API_BEARER)
-API_CALLS = {"seruser": 0, "get_users": 0, "get_users_tweets": 0, "get_tweets": 0}
+API_CALLS = {"get_user": 0, "get_users": 0, "get_users_tweets": 0, "get_tweets": 0}
 RATE_LIMITS = {"get_user": 300, "get_users": 300, "get_users_tweets": 900, "get_tweets": 300}
 
 COLUMNS = ["username", "is_quoted_tweet", "is_retweeted_tweet", "tweet_id", "created_at", "text", "cashtags", "hashtags", "like_count", "reply_count", "retweet_count", "referenced_tweets", "context_annotations", "entity_annotations"]
