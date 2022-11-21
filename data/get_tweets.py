@@ -11,7 +11,7 @@ pip3 install --user tweepy
 
 To run script:
 ipython
-run get_tweets.py sp_500_twitter_subsidiaries_manual_no_duplicates.csv
+run get_tweets.py mergr_twitter_subsidiaries_manual.csv
 """
 import tweepy
 from twitter_api_xanda import TWITTER_API_BEARER
@@ -253,32 +253,14 @@ def parse_context_annotations(tweet):
 
 # To run script:
 # ipython
-# run get_tweets.py sp_500_twitter_subsidiaries_manual_no_duplicates.csv
+# run get_tweets.py mergr_twitter_subsidiaries_manual.csv
 if __name__ == "__main__":
-    output_folder =  'data/tweets/ten_years/'
+    output_folder =  'data/tweets/ten_years_mergr/'
 
-    # Map each original company Twitter handle to a list of its and its mentioned subsidiaries' Twitter handles
-    handle_to_subsidiary_mentions_map = {'ATVI_AB': ['activision', 'blizzard_ent', 'king_games'],
-                                        'AlignTechInc': ['Invisalign', 'exocad', 'iTeroScanner'],
-                                        'amazon': ['AmazonNews'],
-                                        'BioRadFlowAbs': ['BioRadCellBio'],
-                                        'BookingHoldings': ['bookingcom', 'kayak', 'priceline', 'opentable', 'agoda'],
-                                        'Campbells': ['CampbellSoupCo'],
-                                        'CharterNewsroom': ['SpectrumBiz'],
-                                        'ChubbNA': ['Chubb'],
-                                        'Cisco': ['HeyCisco'],
-                                        'edisonintl': ['SCE', 'Edison_Energy'],
-                                        'ExpediaGroup': ['expedia', 'travelocity', 'orbitz', 'hotelsdotcom', 'hotwire', 'vrbo', 'expediamedia'],
-                                        'FBHS_News': ['Moen', 'ThermaTru', 'FiberonDecking', 'LarsonDoors', 'MasterLockUS'],
-                                        'Intuit': ['TurboTax', 'CreditKarma', 'QuickBooks', 'Mailchimp'],
-                                        'roberthalf': ['Protiviti'],
-                                        'NewsfromRCgroup': ['RoyalCaribbean', 'CelebrityCruise', 'Silversea', 'TUICruises', 'hlcruises'],
-                                        'ServiceNow': ['ServiceNowNews']}
-
-    twitter_handles = []
-    for parent_company in handle_to_subsidiary_mentions_map:
-        twitter_handles += handle_to_subsidiary_mentions_map[parent_company]
-
+    # Read CSV of Twitter handles
+    twitter_handle_csv = sys.argv[1]
+    twitter_handle_df = pd.read_csv(twitter_handle_csv)
+    twitter_handles = twitter_handle_df["Twitter Handle"].dropna()  # Drop nulls (some companies don't have Twitters)
     for handle in twitter_handles:
         print(f"Getting tweets for {handle}.")
         company_df = get_tweets_for_user(handle, num_years=10, get_quoted_tweets=True, get_retweeted_tweets=True)
