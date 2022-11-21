@@ -1,0 +1,251 @@
+Name,Sector,Address,City,"State or Province",Zip,Country,Phone,Url,"Revenue ($mlns)",Employees,"Ownership Status",Investors/Acquirers,"Buy M&A Count - Total","Avg. Buy Count Per Year (Last 5 Yrs)","Sell M&A Count - Total","Avg. Sell Count Per Year (Last 5 Yrs)"
+Walmart,Retail,"702 SW 8th Street",Bentonville,Arkansas,72716,"United States","(479) 273-4000",www.walmart.com,"572,754",2300000,Public,,20,1.4,5,0.8
+Amazon,E-Commerce,"410 Terry Avenue North",Seattle,Washington,98109,"United States","(206) 266-1000",www.amazon.com,"469,822",1523000,Public,,77,4.0,2,0.4
+Apple,"Technology Hardware","1 Infinite Loop",Cupertino,California,95014,"United States","(408) 996-1010",www.apple.com,"365,817",150000,Public,,108,3.8,2,
+"CVS Health","Healthcare Services","One CVS Drive",Woonsocket,"Rhode Island",02895,"United States","(401) 765-1500",www.cvshealth.com,"292,111",213000,Public,,17,1.0,5,0.4
+"Berkshire Hathaway",Diversified,"3555 Farnam Street",Omaha,Nebraska,68131,"United States","(402) 346-1400",www.berkshirehathaway.com,"286,256",360000,Public,,68,0.4,,
+Exxon,"Oil/Gas Exploration","5959 Las Colinas Boulevard",Irving,Texas,75039,"United States","(972) 940-6000",www.corporate.exxonmobil.com,"276,692",63000,Public,,8,,6,0.4
+Google,"Internet Software and Services","1600 Amphitheatre Parkway","Mountain View",California,94043,"United States","(650) 253-0000",www.abc.xyz,"257,637",139995,Public,,221,4.0,6,0.2
+UnitedHealth,"Healthcare Services","UnitedHealth Group Center 9900 Bren Road East",Minnetonka,Minnesota,55343,"United States","(952) 936-1300",www.unitedhealthgroup.com,"255,639",330000,Public,,16,0.6,2,
+McKesson,"Information Technology","6555 State Highway 161",Irving,Texas,75039,"United States","(972) 446-4800",www.mckesson.com,"238,228",59000,Public,,51,0.4,17,0.8
+AmerisourceBergen,Distribution,"1 West First Avenue",Conshohocken,Pennsylvania,19428,"United States","(610) 727-7000",www.amerisourcebergen.com,"213,989",42000,Public,"Walgreens Boots Alliance, Inc.|Alliance Boots GmbH",13,0.2,3,
+AT&T,Communications,"208 South Akard Street",Dallas,Texas,75202,"United States","(210) 821-4105",www.att.com,"168,864",172400,Public,,36,0.6,22,2.0
+Microsoft,Software,"One Microsoft Way",Redmond,Washington,98052,"United States","(425) 882-8080",www.microsoft.com,"168,088",181000,Public,,209,7.2,12,0.4
+"Costco Wholesale",Retail,"999 Lake Dr",Issaquah,Washington,98027,"United States","(425) 313-8100",www.costco.com,"166,761",156000,Public,,3,0.4,,
+"Cardinal Health",Distribution,"7000 Cardinal Place",Dublin,Ohio,43017,"United States","(614) 757-5000",www.cardinalhealth.com,"162,467",44000,Public,,39,,9,0.4
+Walgreens,Retail,"108 Wilmot Road",Deerfield,Illinois,60015,"United States","(847) 315-2500",www.walgreensbootsalliance.com,"139,537",223000,Public,,24,0.4,1,
+"Elevance Health",Insurance,"220 Virginia Avenue",Indianapolis,Indiana,46204,"United States","(800) 331-1476",www.antheminc.com,"138,639",98200,Public,,25,1.4,2,
+Kroger,Retail,"1014 Vine Street",Cincinnati,Ohio,45202,"United States","(513) 762-4000",www.thekrogerco.com,"137,888",500000,Public,,13,0.4,2,0.4
+"Ford Motor",Automotive,"One American Road",Dearborn,Michigan,48126,"United States","(313) 322-3000",www.ford.com,"136,341",183000,Public,,12,0.6,12,0.6
+"Home Depot",Retail,"2455 Paces Ferry Road",Atlanta,Georgia,30339,"United States","(770) 433-8211",www.homedepot.com,"132,110",504800,Public,,16,0.2,2,
+Verizon,Communications,"1095 Avenue of the Americas","New York","New York",10036,"United States","(212) 395-1000",www.verizon.com,"128,292",130100,Public,,34,1.6,13,0.6
+Centene,Insurance,"Centene Plaza 7700 Forsyth Boulevard","St. Louis",Missouri,63105,"United States","(314) 725-4477",www.centene.com,"125,982",72500,Public,,20,1.4,4,0.8
+GM,Automotive,"300 Renaissance Center",Detroit,Michigan,48265,"United States","(313) 667-1500",www.gm.com,"122,485",155000,Public,,4,,6,0.2
+"JPMorgan Chase","Financial Services","383 Madison Avenue","New York","New York",10179,"United States","(212) 270-6000",www.jpmorganchase.com,"121,706",271025,Public,,25,2.4,9,0.4
+Marathon,"Energy Services and Equipment","539 South Main Street",Findlay,Ohio,45840,"United States","(419) 422-2121",www.marathonpetroleum.com,"119,983",17700,Public,,2,0.2,2,0.4
+Facebook,"Internet Software and Services","1601 Willow Road","Menlo Park",California,94025,"United States","(650) 543-4800",www.facebook.com,"117,929",77805,Public,,83,3.2,,
+Comcast,Media,"One Comcast Center 1701 John F. Kennedy Boulevard",Philadelphia,Pennsylvania,19103,"United States","(215) 286-1700",www.corporate.comcast.com,"116,385",189000,Public,,25,1.2,1,0.2
+Dell,"Technology Hardware","1 Dell Way","Round Rock",Texas,78682,"United States","(800) 289-3355",www.delltechnologies.com,"101,197",133000,Public,,29,,7,0.2
+UPS,Transportation,"55 Glenlake Parkway, NE",Atlanta,Georgia,30328,"United States","(404) 828-6000",www.ups.com,"97,287",273510,Public,,19,0.4,4,0.4
+Lowe's,Retail,"1000 Lowe's Boulevard",Mooresville,"North Carolina",28117,"United States","(704) 758-1000",www.lowes.com,"96,250",200000,Public,,8,0.4,2,0.4
+Chevron,"Oil/Gas Exploration","6001 Bollinger Canyon Road","San Ramon",California,94583,"United States","(925) 842-1000",www.chevron.com,"94,471",47736,Public,,15,0.8,14,0.2
+"Johnson & Johnson","Consumer Products","One Johnson & Johnson Plaza","New Brunswick","New Jersey",08933,"United States","(732) 524-0400",www.jnj.com,"93,775",141700,Public,,41,1.2,17,0.6
+Target,Retail,"1000 Nicollet Mall",Minneapolis,Minnesota,55403,"United States","(612) 304-6073",www.targetcorp.com,"93,561",409000,Public,,9,0.2,5,
+"Bank of America","Financial Services","Bank of America Corporate Center 100 North Tryon Street",Charlotte,"North Carolina",28255,"United States","(704) 386-5681",www.bankofamerica.com,"89,113",210000,Public,,12,0.2,17,0.2
+ADM,Agriculture,"77 West Wacker Drive, Suite 4600",Chicago,Illinois,60601,"United States","(312) 634-8100",www.adm.com,"85,249",39218,Public,,43,2.6,8,0.2
+FedEx,Transportation,"942 South Shady Grove Road",Memphis,Tennessee,38120,"United States","(901) 818-7500",www.fedex.com,"83,959",324000,Public,,22,0.8,,
+Humana,"Healthcare Services","Humana Building 500 West Main Street",Louisville,Kentucky,40202,"United States","(502) 580-1000",www.humana.com,"83,064",95500,Public,,31,1.0,6,0.4
+Pfizer,"Life Science","235 East 42nd Street","New York","New York",10017,"United States","(212) 733-2323",www.pfizer.com,"81,288",79000,Public,,41,2.2,17,1.0
+"General Electric",Diversified,"5 Necco Street",Boston,Massachusetts,02210,"United States","(617) 443-3000",www.ge.com,"79,619",205000,Public,,40,,44,2.0
+Intel,Semiconductors,"2200 Mission College Boulevard","Santa Clara",California,95054,"United States","(408) 765-8080",www.intel.com,"79,024",122900,Public,,97,2.6,14,1.2
+"Procter & Gamble","Consumer Products","One Procter & Gamble Plaza",Cincinnati,Ohio,45202,"United States","(513) 983-1100",www.pginvestor.com,"76,118",99000,Public,,27,1.2,31,0.2
+"Wells Fargo","Financial Services","420 Montgomery Street","San Francisco",California,94163,"United States","(866) 249-3302",www.wellsfargo.com,"72,340",264513,Public,,23,0.2,16,1.2
+Citi,"Financial Services","388 Greenwich Street","New York","New York",10013,"United States","(212) 559-1000",www.citigroup.com,"71,887",231000,Public,,16,,18,0.2
+PepsiCo,Beverages,"700 Anderson Hill Road",Purchase,"New York",10577,"United States","(914) 253-2000",www.pepsico.com,"70,372",291000,Public,,26,1.6,3,0.2
+"T-Mobile US",Communications,"12920 South East 38th Street",Bellevue,Washington,98006,"United States","(425) 378-4000",www.t-mobile.com,"68,397",75000,Public,,11,0.8,3,0.2
+"Energy Transfer","Energy Services and Equipment","8111 Westchester Drive, Suite 600",Dallas,Texas,75225,"United States","(214) 981-0700",www.energytransfer.com,"67,417",12558,Public,,9,0.6,1,
+"Lockheed Martin",Aerospace,"6801 Rockledge Drive",Bethesda,Maryland,20817,"United States","(301) 897-6000",www.lockheedmartin.com,"67,044",114000,Public,,28,0.2,7,0.4
+MetLife,Insurance,"200 Park Avenue","New York","New York",10166,"United States","(212) 578-9500",www.metlife.com,"66,037",0,Public,,12,0.6,5,0.2
+"Walt Disney",Media,"500 South Buena Vista Street",Burbank,California,91521,"United States","(818) 560-1000",www.thewaltdisneycompany.com,"65,388",175000,Public,,21,,8,0.8
+Valero,"Energy Services and Equipment","One Valero Way","San Antonio",Texas,78249,"United States","(210) 345-2000",www.valero.com,"64,912",9964,Public,,5,0.4,8,
+"Phillips 66","Energy Services and Equipment","2331 CityWest Boulevard",Houston,Texas,77042,"United States","(281) 293-6600",www.phillips66.com,"64,129",14300,Public,,3,0.4,3,0.2
+HP,"Technology Hardware","1501 Page Mill Road","Palo Alto",California,94304,"United States","(650) 857-1501",www.hp.com,"63,487",51000,Public,,95,1.2,14,
+Boeing,Aerospace,"100 North Riverside Plaza",Chicago,Illinois,60606,"United States","(312) 544-2000",www.boeing.com,"62,286",142000,Public,,32,1.0,5,
+Bunge,Agriculture,"1391 Timberlake Manor Parkway","St. Louis",Missouri,63017,"United States","(314) 292-2000",www.bunge.com,"59,152",22000,Public,,10,,4,0.2
+"HCA Healthcare","Healthcare Services","One Park Plaza",Nashville,Tennessee,37203,"United States","(615) 344-9551",www.hcahealthcare.com,"58,752",204000,Public,,16,1.4,7,0.4
+IBM,"Information Technology","1 New Orchard Road",Armonk,"New York",10504,"United States","(914) 499-1900",www.ibm.com,"57,351",282100,Public,,189,4.8,31,2.0
+"Prudential Financial",Insurance,"751 Broad Street",Newark,"New Jersey",07102,"United States","(973) 802-6000",www.prudential.com,"57,033",41671,Public,,6,0.6,9,0.8
+"Raytheon Technologies",Diversified,"870 Winter Street",Waltham,Connecticut,02451,"United States","(781) 522-3000",www.rtx.com,"56,587",181000,Public,,21,0.8,18,1.2
+"Morgan Stanley","Financial Services","1585 Broadway","New York","New York",10036,"United States","(212) 761-4000",www.morganstanley.com,"56,414",75000,Public,,5,0.8,9,0.2
+AbbVie,"Life Science","1 North Waukegan Road","North Chicago",Illinois,60064,"United States","(847) 932-7900",www.abbvie.com,"56,197",50000,Public,,7,0.8,1,0.2
+StoneX,"Business Services","155 East 44th Street Suite 900","New York","New York",10017,"United States","(212) 485-3500",www.stonex.com,"54,140",2946,Public,,17,2.4,,
+Sysco,Distribution,"1390 Enclave Parkway",Houston,Texas,77077,"United States","(281) 584-1390 ",www.sysco.com,"52,893",57000,Public,,35,1.0,1,0.2
+AIG,Insurance,"1271 Avenue of the Americas","New York","New York",10020,"United States","(212) 770-7000",www.aig.com,"51,885",36600,Public,,16,0.4,17,0.4
+"Charter Communications",Communications,"400 Atlantic Street",Stamford,Connecticut,06901,"United States","(203) 905-7801",www.corporate.charter.com,"51,682",93700,Public,"Sandler Capital Management",11,,3,
+Caterpillar,Machinery,"510 Lake Cook Road Suite 100",Deerfield,Illinois,60015,"United States","(224) 551-4000",www.caterpillar.com,"50,971",97000,Public,,38,0.6,8,0.2
+"Cisco Systems","Technology Hardware","170 West Tasman Drive","San Jose",California,95134,"United States","(408) 526-7209",www.cisco.com,"49,818",77500,Public,,218,3.2,6,0.2
+Merck,"Life Science","2000 Galloping Hill Road",Kenilworth,"New Jersey",07033,"United States","(908) 740-4000",www.merck.com,"48,704",67000,Public,,29,2.6,7,0.6
+"Best Buy",Retail,"7601 Penn Ave. S.",Richfield,Minnesota,55423,"United States","(612) 291-1000",www.bestbuy.com,"47,262",61200,Public,,12,0.4,4,
+"Bristol-Myers Squibb","Life Science","430 East 29th Street 14th Floor","New York","New York",10016,"United States","(212) 546-4000",www.bms.com,"46,385",32200,Public,,20,0.8,13,0.8
+ConocoPhillips,"Oil/Gas Exploration","925 North Eldridge Parkway PO Box 2197",Houston,Texas,77079,"United States","(281) 293-1000",www.conocophillips.com,"45,828",9400,Public,,7,0.4,10,0.6
+Allstate,Insurance,"2775 Sanders Road",Northbrook,Illinois,60062,"United States","(847) 402-5000",www.allstate.com,"44,791",41860,Public,,14,1.0,5,0.4
+"The Goldman Sachs Group","Financial Services","200 West Street","New York","New York",10282,"United States","(212) 902-1000",www.goldmansachs.com,"44,560",40500,Public,,7,0.4,4,0.4
+Nike,Apparel/Textiles,"One Bowerman Drive",Beaverton,Oregon,97005,"United States","(503) 671-6453",nikeinc.com,"44,538",73300,Public,,11,1.0,5,0.2
+Deere,Machinery,"One John Deere Place",Moline,Illinois,61265,"United States","(309) 765-8000",www.deere.com,"43,582",75550,Public,,22,1.8,4,0.2
+Tyson,Food,"2200 W. Don Tyson Parkway",Springdale,Arkansas,72762,"United States","(479) 290-4000",www.tysonfoods.com,"43,185",139000,Public,,13,0.6,6,0.6
+"American Express","Financial Services","200 Vesey Street","New York","New York",10285,"United States","(212) 640-2000",www.americanexpress.com,"43,147",64000,Public,,16,1.0,6,
+"Abbott Laboratories","Medical Products","100 Abbott Park Road Abbott Park","North Chicago",Illinois,60064,"United States","(224) 667-6100",www.abbott.com,"43,075",113000,Public,,33,0.4,8,0.2
+Progressive,Insurance,"6300 Wilson Mills Road","Mayfield Village",Ohio,44143,"United States","(440) 461-5000",www.progressive.com,"42,638",43326,Public,,3,0.2,,
+Oracle,Software,"2300 Oracle Way",Austin,Texas,78741,"United States","(737) 867-1000",www.oracle.com,"42,440",135000,Public,,131,2.0,1,
+TJX,Retail,"770 Cochituate Road",Framingham,Massachusetts,01701,"United States","(508) 390-1000",www.tjx.com,"41,717",320000,Public,,5,0.2,1,
+"Enterprise Products Partners","Oil/Gas Exploration","1100 Louisiana Street, 10th Floor",Houston,Texas,77002,"United States","(713) 381-6500",www.enterpriseproducts.com,"40,807",0,Public,,19,0.4,5,0.2
+Coca-Cola,Beverages,"One Coca-Cola Plaza",Atlanta,Georgia,30313,"United States","(404) 676-2121",www.coca-colacompany.com,"38,660",80300,Public,,18,0.4,8,0.6
+Dow,Chemicals,"2211 H.H. Dow Way",Midland,Michigan,48674,"United States","(989) 636-1000",www.dow.com,"38,542",35700,Public,,9,,17,0.4
+"General Dynamics",Defense,"2941 Fairview Park Drive,Suite 100","Falls Church",Virginia,22042,"United States","(703) 876-3000",www.gd.com,"38,469",103000,Public,,30,0.2,6,
+Nucor,Metals/Mining,"1915 Rexford Road",Charlotte,"North Carolina",28211,"United States","(704) 366-7000",www.nucor.com,"36,484",28800,Public,,33,2.4,,
+Exelon,Utilities,"10 South Dearborn Street, 48th Floor PO Box 805379",Chicago,Illinois,60680,"United States","(800) 483-3220",www.exeloncorp.com,"36,347",31518,Public,,7,,6,0.4
+"Northrop Grumman",Aerospace,"2980 Fairview Park Drive","Falls Church",Virginia,22042,"United States","(703) 280-2900",www.northropgrumman.com,"35,667",88000,Public,,21,0.4,14,0.2
+3M,Diversified,"3M Center","St Paul",Minnesota,55144,"United States","(651) 733-1110",www.3m.com,"35,355",95000,Public,,81,0.6,19,1.0
+"Arrow Electronics",Distribution,"9201 East Dry Creek Road",Centennial,Colorado,80112,"United States","(303) 824-4000",www.arrow.com,"34,477",20700,Public,,34,0.2,1,
+"Honeywell International",Diversified,"855 South Mint Street",Charlotte,"New Jersey",28202,"United States","(704) 627-6200",www.honeywell.com,"34,392",99000,Public,,78,2.0,8,0.2
+"Dollar General",Retail,"100 Mission Ridge",Goodlettsville,Tennessee,37072,"United States","(615) 855-4000",www.dollargeneral.com,"34,220",163000,Public,,1,0.2,,
+CHS,Agriculture,"5500 Cenex Drive","Inver Grove Heights",Minnesota,55077,"United States","(651) 355-6000",www.chsinc.com,"32,683",10493,Public,,9,,,
+"Thermo Fisher Scientific","Test/Measurement Equipment","168 Third Avenue",Waltham,Massachusetts,02451,"United States","(781) 622-1000",www.thermofisher.com,"32,218",80000,Public,,59,2.0,8,0.2
+Travelers,Insurance,"485 Lexington Avenue","New York","New York",10017,"United States","(917) 778-6000",www.travelers.com,"31,981",29988,Public,,8,0.4,2,
+CarMax,Retail,"12800 Tuckahoe Creek Parkway",Richmond,Virginia,23238,"United States","(804) 747-0422",www.carmax.com,"31,900",30000,Public,,1,0.2,1,0.2
+Tesla,Automotive,"3500 Deer Creek Road","Palo Alto",California,94304,"United States","(650) 681-5000",www.tesla.com,"31,536",70757,Public,,6,0.4,,
+Delta,Airlines,"Post Office Box 20706",Atlanta,Georgia,30320,"United States","(404) 715-2600",www.delta.com,"29,899",83000,Public,,2,,1,
+Netflix,"Digital Media","100 Winchester Circle","Los Gatos",California,95032,"United States","(408) 540-3700",www.netflix.com,"29,698",11300,Public,,5,0.8,,
+Danaher,Diversified,"2200 Pennsylvania Avenue, NW Suite 800W",Washington,"District of Columbia",20037,"United States","(202) 828-0850",www.danaher.com,"29,453",78000,Public,,41,0.8,9,0.2
+Jabil,Manufacturing,"10560 Drive Martin Luther King, Jr. Street North","St. Petersburg",Florida,33716,"United States","(727) 577-9749",www.jabil.com,"29,285",260000,Public,,7,0.2,,
+"Mondelez International",Food,"905 West Fulton Market Suite 200",Chicago,"New Jersey",60607,"United States","(847) 943-4000",www.mondelezinternational.com,"28,720",79000,Public,,16,1.4,10,
+"Philip Morris International","Consumer Products","120 Park Avenue","New York","New York",10017,"United States","(917) 663-2000",www.pmi.com,"28,694",71000,Public,,7,0.8,,
+Lilly,"Life Science","Lilly Corporate Center",Indianapolis,Indiana,46285,"United States","(317) 276-2000",www.lilly.com,"28,318",35000,Public,,28,1.8,9,0.2
+"Capital One","Financial Services","1680 Capital One Drive",McLean,Virginia,22102,"United States","(703) 720-1000",www.capitalone.com,"27,933",51700,Public,,22,0.8,,
+"Hewlett Packard","Information Technology","11445 Compaq Center West Drive",Houston,Texas,77070,"United States","(650) 687-5817",www.hpe.com,"27,784",60400,Public,,15,1.6,6,0.2
+"D.R. Horton",Construction,"1341 Horton Circle",Arlington,Texas,76011,"United States","(817) 390-8200",www.drhorton.com,"27,774",11788,Public,,10,0.8,,
+"Molina Healthcare",Insurance,"200 Oceangate, Suite 100","Long Beach",California,90802,"United States","(562) 435-3666",www.molinahealthcare.com,"27,771",14000,Public,,11,1.4,1,0.2
+LyondellBasell,Chemicals,"1221 McKinney Street Suite 300",Houston,Texas,77010,"United States","713 309 7200",www.lyondellbasell.com,"27,753",19100,Public,"Apollo Global Management|Ares Private Equity Group|Access Industries, Inc.",8,0.6,4,0.2
+CBRE,"Real Estate","2100 McKinney Avenue, Suite 1250",Dallas,Texas,75201,"United States","(214) 979-6100",www.cbre.com,"27,746",105000,Public,,45,1.6,1,0.2
+Micron,Semiconductors,"8000 South Federal Way",Boise,Idaho,83716,"United States","(208) 368-4000",www.micron.com,"27,705",44000,Public,,11,0.2,2,
+Broadcom,Semiconductors,"1320 Ridder Park Drive","San Jose",California,95131,"United States","+408 433 8000",www.broadcom.com,"27,450",20000,Public,,15,0.6,8,0.6
+Lennar,Construction,"700 Northwest 107th Avenue",Miami,Florida,33172,"United States","(305) 559-4000",www.lennar.com,"27,131",10753,Public,,15,0.2,,
+NRG,Utilities,"910 Louisiana Street",Houston,"New Jersey",77002,"United States","(713) 537-3000",www.nrg.com,"26,989",6635,Public,,15,0.2,6,0.4
+NVIDIA,Semiconductors,"2788 San Tomas Expressway","Santa Clara",California,95051,"United States","(408) 486-2000",www.nvidia.com,"26,914",22473,Public,,15,0.8,,
+UNFI,Distribution,"313 Iron Horse Way",Providence,"Rhode Island",02908,"United States","(401) 528-8634",www.unfi.com,"26,514",28300,Public,,8,0.2,,
+"Dollar Tree",Retail,"500 Volvo Parkway",Chesapeake,Virginia,23320,"United States","(757) 321-5000",www.dollartree.com,"26,321",61886,Public,,4,,1,
+Amgen,"Life Science","One Amgen Center Drive","Thousand Oaks",California,91320,"United States","(805) 447-1000",www.amgen.com,"25,979",24200,Public,,20,1.0,,
+Macy's,Retail,"151 West 34th Street","New York","New York",10001,"United States","(212) 494-1602",www.macysinc.com,"25,292",123000,Public,,4,0.2,2,
+Paramount,Media,"1515 Broadway","New York","New York",10036,"United States","(212) 258-6000",www.paramount.com,"25,285",22109,Public,,12,0.8,5,0.4
+"Duke Energy","Energy Services and Equipment","526 South Church Street",Charlotte,"North Carolina",28202,"United States","(704) 382-3853",www.duke-energy.com,"25,097",27605,Public,,12,0.6,9,0.2
+PFG,Distribution,"12500 West Creek Parkway",Richmond,Virginia,23238,"United States","(804) 484-7700",www.pfgc.com,"25,086",20000,Public,,6,0.6,1,
+"Gilead Sciences","Life Science","333 Lakeside Drive","Foster City",California,94404,"United States","(650) 574-3000",www.gilead.com,"24,689",11000,Public,,22,1.2,3,
+"TD SYNNEX","Business Services","44201 Nobel Drive",Fremont,California,94538,"United States","(510) 656-3333",www.synnexcorp.com,"24,676",22000,Public,"Apollo Global Management",15,0.4,,
+United,Airlines,"233 South Wacker Drive",Chicago,Illinois,60606,"United States","(872) 825-4000",www.united.com,"24,634",87000,Public,,3,,1,
+"Rite Aid",Retail,"30 Hunter Lane","Camp Hill",Pennsylvania,17011,"United States","(717) 761-2633",www.riteaid.com,"24,043",50000,Public,,12,0.4,1,
+Cummins,Machinery,"500 Jackson Street",Columbus,Indiana,47201,"United States","(812) 377-5000",www.cummins.com,"24,021",59900,Public,,9,1.0,2,
+Schlumberger,"Energy Services and Equipment","5599 San Felipe",Houston,Texas,77042,"United States",,www.slb.com,"23,601",86000,Public,,46,0.4,7,0.4
+Qualcomm,Semiconductors,"5775 Morehouse Drive","San Diego",California,92121,"United States","(858) 587-1121",www.qualcomm.com,"23,531",41000,Public,,37,1.0,5,0.4
+Starbucks,Beverages,"2401 Utah Avenue South",Seattle,Washington,98134,"United States","(206) 447-1575",www.starbucks.com,"23,518",349000,Public,,9,,3,0.4
+"Plains All American","Energy Services and Equipment","333 Clay Street, Suite 1600",Houston,Texas,77002,"United States","(713) 646-4100",www.plainsallamerican.com,"23,290",4400,Public,"Kayne Anderson Capital Advisors LP|First Reserve Management L.P.|EnCap Investments|EnCap Flatrock Midstream",7,0.2,2,0.4
+"US Bank","Financial Services","800 Nicollet Mall",Minneapolis,Minnesota,55402,"United States","(651) 466-3000",www.usbank.com,"23,226",70000,Public,,10,0.8,2,0.2
+McDonald's,Restaurants,"110 North Carpenter Street",Chicago,Illinois,60607,"United States","(630) 623-3000",www.aboutmcdonalds.com,"23,223",100000,Public,,6,0.4,7,0.2
+"Applied Materials",Semiconductors,"3050 Bowers Avenue, P.O. Box 58039","Santa Clara",California,95052,"United States","(408) 727-5555",www.appliedmaterials.com,"23,063",30100,Public,,20,0.4,,
+"US Foods",Distribution,"9399 West Higgins Road, Suite 500",Rosemont,Illinois,60018,"United States","(847) 720-8000",www.usfoods.com,"22,885",26000,Public,"KKR & Co. L.P.",23,0.4,,
+Freeport-McMoRan,Metals/Mining,"333 North Central Avenue",Phoenix,Arizona,85004,"United States","(602) 366-8100",www.fcx.com,"22,845",24700,Public,,3,,2,
+"Lithia Motors",Automotive,"150 North Bartlett Street",Medford,Oregon,97501,"United States","(541) 776-6401",www.lithiainvestorrelations.com,"22,832",21150,Public,,20,1.6,,
+Truist,"Financial Services","214 North Tryon Street",Charlotte,"North Carolina",28202,"United States","(336) 733-2000",www.truist.com,"22,705",53207,Public,,50,1.0,,
+Whirlpool,"Consumer Products","2000 North M-63","Benton Harbor",Michigan,49022,"United States","(269) 923-5000",www.whirlpoolcorp.com,"21,985",69000,Public,,9,0.2,4,0.4
+AFLAC,Insurance,"1932 Wynnton Road",Columbus,Georgia,31999,"United States","(706) 323-3431",www.aflac.com,"21,923",12447,Public,,3,0.4,,
+Visa,"Financial Services","PO Box 8999","San Francisco",California,94128,"United States","(650) 432-3200",www.usa.visa.com,"21,846",20500,Public,,14,1.6,,
+PayPal,"Financial Services","2211 North First Street","San Jose",California,95131,"United States","(408) 967-1000",www.paypal.com,"21,454",26500,Public,,21,1.6,,
+Salesforce,"Internet Software and Services","Salesforce Tower 3rd Floor 415 Mission Street","San Francisco",California,94105,"United States","(415) 901-7000",www.salesforce.com,"21,252",56606,Public,,60,2.8,,
+Altria,"Consumer Products","6601 West Broad Street",Richmond,Virginia,23230,"United States","(804) 274-2200",www.altria.com,"21,111",6000,Public,,6,0.4,3,
+AerSale,Aerospace,"121 Alhambra Plaza Suite 1110","Coral Gables",Florida,33134,"United States","(305) 764-3232",www.aersale.com,"20,908",470,Public,,2,0.4,,
+CDW,E-Commerce,"200 North Milwaukee Avenue","Vernon Hills",Illinois,60061,"United States","(847) 465-6000",www.cdw.com,"20,821",12850,Public,,6,0.8,,
+ManpowerGroup,Staffing,"100 Manpower Place",Milwaukee,Wisconsin,53212,"United States","(414) 961-1000",www.manpowergroup.com,"20,724",30000,Public,,14,0.2,,
+"Baker Hughes","Energy Services and Equipment","17021 Aldine Westfield Road",Houston,Texas,77073,"United States","(713) 439-8600",www.bakerhughes.com,"20,502",54000,Public,,19,0.8,9,1.2
+Penske,Retail,"2555 Telegraph Road","Bloomfield Hills",Michigan,48302,"United States","(248) 648-2500",www.penskeautomotive.com,"20,444",23000,Public,,23,0.8,,
+DuPont,Chemicals,"Building 730 974 Centre Road",Wilmington,Delaware,19805,"United States","(302) 774-1000",www.dupont.com,"20,397",34000,Public,,18,1.2,19,0.6
+AutoNation,Automotive,"200 SW 1st Avenue Fort Lauderdale","Fort Lauderdale",Florida,33301,"United States","(954) 769-6000",www.autonation.com,"20,390",21600,Public,,13,0.2,1,
+Southern,Utilities,"30 Ivan Allen Jr Boulevard NW",Atlanta,Georgia,30308,"United States","(404) 506-5000",www.southerncompany.com,"20,375",27700,Public,,5,0.2,6,0.8
+"World Fuel Services","Energy Services and Equipment","9800 Northwest 41st Street, Suite 400",Miami,Florida,33178,"United States","(305) 428-8000",www.wfscorp.com,"20,358",4300,Public,,16,0.4,1,0.2
+"The Hartford",Insurance,"One Hartford Plaza",Hartford,Connecticut,06155,"United States","(860) 547-5000",www.thehartford.com,"20,320",18500,Public,,4,0.4,8,0.4
+"Becton Dickinson","Medical Products","1 Becton Drive","Franklin Lake","New Jersey",07417,"United States","(201) 847-6800",www.bd.com,"20,248",75000,Public,,27,1.6,7,0.2
+"Marsh & McLennan",Insurance,"1166 Avenue of the Americas","New York","New York",10036,"United States","(212) 345-5000",www.mmc.com,"19,820",83000,Public,,13,0.8,3,
+Lumen,Communications,"100 CenturyLink Drive",Monroe,Louisiana,71203,"United States","(318) 388-9000",www.lumen.com,"19,687",36000,Public,,17,0.2,3,0.4
+"EOG Resources","Oil/Gas Exploration","1111 Bagby Sky Lobby 2",Houston,Texas,77002,"United States","(713) 651-7000",www.eogresources.com,"19,669",2800,Public,,2,,1,
+"Union Pacific",Transportation,"1400 Douglas Street",Omaha,Nebraska,68179,"United States","(402) 544-5000",www.up.com,"19,533",29755,Public,,5,0.6,1,
+Kimberly-Clark,"Consumer Products","PO Box 619100",Dallas,Texas,75261,"United States","(972) 281-1200",www.kimberly-clark.com,"19,440",45000,Public,,14,0.4,4,0.2
+"Kohl's ",Retail,"N56 W17000 Ridgewood Drive","Menomonee Falls",Wisconsin,53051,"United States","(262) 703-7000",www.Kohls.com,"19,433",99000,Public,,,,,
+JLL,"Real Estate","200 East Randolph Drive",Chicago,Illinois,60601,"United States","(312) 782-5800",www.jll.com,"19,367",98200,Public,,29,1.8,,
+"International Paper",Packaging,"6400 Poplar Avenue",Memphis,Tennessee,38197,"United States","(901) 419-9000",www.internationalpaper.com,"19,363",38200,Public,,14,0.2,12,0.8
+Lear,Automotive,"21557 Telegraph Road",Southfield,Michigan,48033,"United States","(248) 447-1500",www.lear.com,"19,263",160100,Public,,21,1.0,1,
+PNC,"Financial Services","The Tower at PNC Plaza 300 Fifth Avenue",Pittsburgh,Pennsylvania,15222,"United States","(888) 762-2265",www.pnc.com,"19,135",49549,Public,,17,0.8,5,0.4
+MasterCard,"Financial Services","2000 Purchase Street",Purchase,"New York",10577,"United States","(914) 249-2000",www.mastercard.com,"18,884",24000,Public,,26,2.6,,
+"Genuine Parts",Automotive,"2999 Circle 75 Parkway",Atlanta,Georgia,30339,"United States","(678) 934-5000",www.genpt.com,"18,871",50000,Public,,18,0.6,2,0.2
+PACCAR,Automotive,"777-106th Avenue NE",Bellevue,Washington,98004,"United States","(425) 468-7400",www.paccar.com,"18,729",26000,Public,,2,,,
+Kyndryl,"Information Technology","One Vanderbilt Avenue 15th Floor","New York","New York",10017,"United States","(212) 896-2098",www.kyndryl.com,"18,657",90000,Public,,,,,
+Cognizant,"Information Technology","300 Frank West Burr Boulevard",Teaneck,"New Jersey",07666,"United States","(201) 801-0233",www.cognizant.com,"18,507",330600,Public,,50,4.8,1,0.2
+Moderna,"Life Science","200 Technology Square",Cambridge,Massachusetts,02139,"United States","(617) 714-6500",www.modernatx.com,"18,471",2700,Public,,,,,
+PG&E,Utilities,"77 Beale Street, PO Box 770000","San Francisco",California,94177,"United States","(415) 973-1000",www.pgecorp.com,"18,469",24000,Public,,,,,
+"HF Sinclair","Oil/Gas Exploration","2828 North Harwood, Suite 1300",Dallas,Texas,75201,"United States","(214) 871-3555",www.hfsinclair.com,"18,389",4208,Public,,4,0.6,2,
+Sherwin-Williams,Chemicals,"101 West Prospect Avenue",Cleveland,Ohio,44115,"United States","(216) 566-2000",www.sherwin-williams.com,"18,362",61031,Public,,16,0.8,,
+"Texas Instruments",Semiconductors,"12500 TI Boulevard",Dallas,Texas,75243,"United States","(214) 479-3773",www.ti.com,"18,344",30000,Public,,29,,12,0.2
+Emerson,Diversified,"8000 West Florissant Avenue, P.O. Box 4100","St. Louis",Missouri,63136,"United States","(314) 553-2000",www.emerson.com,"18,236",83500,Public,,64,2.8,26,1.4
+"General Mills",Food,"Number 1 General Mills Boulevard",Minneapolis,Minnesota,55426,"United States","(763) 764-7600",www.generalmills.com,"18,127",35000,Public,,18,0.6,9,0.6
+Landos,"Life Science","1800 Kraft Drive, Suite 216",Blacksburg,Virginia,24060,"United States","(540) 218-2232",www.landosbiopharma.com,"18,000",46,Public,,,,,
+Viatris,"Life Science","1000 Mylan Boulevard",Canonsburg,Pennsylvania,15317,"United States","(724) 514-1800",www.viatris.com,"17,886",40000,Public,,13,0.4,1,0.2
+"DISH Network",Media,"9601 South Meridian Boulevard",Englewood,Colorado,80112,"United States","(303) 723-1000",www.dish.com,"17,881",14500,Public,,6,0.8,,
+"Pioneer Natural Resources","Oil/Gas Exploration","777 Hidden Ridge",Irving,Texas,75039,"United States","(972) 444-9001",www.pxd.com,"17,870",1932,Public,,4,0.4,4,0.6
+L3Harris,Electronics,"1025 West NASA Boulevard",Melbourne,Florida,32919,"United States","(312) 727-9100",www.l3harris.com,"17,814",47000,Public,,29,0.4,20,1.8
+OXY,"Oil/Gas Exploration","5 Greenway Plaza Suite 110","Los Angeles",California,90024,"United States","(713) 215-7000",www.oxy.com,"17,809",11800,Public,,7,0.2,4,0.6
+"Tenet Health","Healthcare Services","14201 Dallas Parkway",Dallas,Texas,75254,"United States","(469) 893-2200",www.tenethealth.com,"17,640",85800,Public,,6,0.2,10,0.4
+Avnet,Distribution,"2211 South 47th Street",Phoenix,Arizona,85034,"United States","(480) 643-2000",www.avnet.com,"17,634",14600,Public,,78,0.4,6,0.2
+WestRock,Packaging,"1000 Abernathy Road NE",Richmond,Virginia,30328,"United States","(770) 448-2193",www.westrock.com,"17,579",50000,Public,,13,0.4,3,0.4
+"Lincoln Financial Group",Insurance,"150 North Radnor Chester Road Suite A305",Radno,Pennsylvania,19087,"United States","(484) 583-1400",www.lfg.com,"17,556",10848,Public,,3,0.2,1,
+Carrier,Machinery,"One Carrier Place ",Farmington,Connecticut,06034,"United States","(860) 674-3000",www.carrier.com,"17,456",56000,Public,,14,1.0,10,0.6
+Colgate-Palmolive,"Consumer Products","300 Park Avenue","New York","New York",10022,"United States","(212) 310-2000",www.colgatepalmolive.com,"17,421",33800,Public,,8,0.6,3,
+"American Airlines",Airlines,"1 Skyview Drive","Fort Worth",Texas,76155,"United States","(817) 963-1234",www.aa.com,"17,337",113200,Public,,4,0.6,2,
+Stryker,"Medical Products","2825 Airview Boulevard",Kalamazoo,Michigan,49002,"United States","(269) 385-2600",www.stryker.com,"17,108",46000,Public,,43,2.2,5,0.6
+"NextEra Energy",Utilities,"700 Universe Boulevard","Juno Beach",Florida,33408,"United States","(561) 694-4000",www.nexteraenergy.com,"17,069",15000,Public,,5,0.4,2,
+AEP,Utilities,"1 Riverside Plaza",Columbus,Ohio,43215,"United States","(614) 716-1000",www.aep.com,"16,792",16688,Public,,5,0.2,4,0.2
+"Western Digital","Technology Hardware","5601 Great Oaks Parkway","San Jose",California,95119,"United States","(408) 717-6000",www.westerndigital.com,"16,736",63800,Public,,15,0.4,2,0.4
+BJ's,Retail,"25 Research Drive",Westborough,Massachusetts,01581,"United States","(774) 512-7400",www.bjs.com,"16,667",34000,Public,,,,,
+"Kinder Morgan","Energy Services and Equipment","1001 Louisiana Street, Suite 1000",Houston,Texas,77002,"United States","(713) 369-9000",www.kindermorgan.com,"16,610",10529,Public,"EIG Global Energy Partners",7,0.6,5,0.2
+Expeditors,Transportation,"1015 Third Avenue",Seattle,Washington,98104,"United States","(206) 674-3400",www.expeditors.com,"16,524",19867,Public,,1,0.2,,
+"DXC Technology","Information Technology","20408 Bashan Drive, Suite 231",Ashburn,Virginia,20147,"United States","(703) 245-9675",www.dxc.technology,"16,265",130000,Public,,44,2.4,12,1.2
+XPO,Transportation,"Five Greenwich Office Park",Greenwich,Connecticut,06831,"United States","(855) 976-6951",www.xpo.com,"16,252",108000,Public,,17,0.2,2,0.2
+"C.H. Robinson Worldwide",Transportation,"14701 Charlson Road","Eden Prairie",Minnesota,55347,"United States","(952) 937-8500",www.chrobinson.com,"16,207",14997,Public,,24,0.8,1,
+BlackRock,"Financial Services","55 East 52nd Street","New York","New York",10055,"United States","(212) 810-5300",www.blackrock.com,"16,205",16700,Public,,7,0.6,1,0.2
+LabCorp,"Test/Measurement Equipment","531 South Spring Street",Burlington,"North Carolina",27215,"United States","(844) 625-0967",www.labcorp.com,"16,121",67950,Public,,42,1.6,2,0.4
+ADP,"Business Services","One ADP Boulevard",Roseland,"New Jersey",07068,"United States","(973) 974-5000",www.adp.com,"16,047",60000,Public,,23,0.4,7,
+Adobe,Software,"345 Park Avenue","San Jose",California,95110,"United States","(408) 536-6000",www.adobe.com,"15,785",22516,Public,,53,1.6,,
+Corteva,Agriculture,"9330 Zionsville Road",Indianapolis,Indiana,46268,"United States","(833) 267-8382",www.corteva.com,"15,655",21000,Public,,1,0.2,1,0.2
+"Rocket Companies","Business Services","1050 Woodward Avenue",Detroit,Michigan,48226,"United States","(313) 373-7990",www.rocketcompanies.com,"15,549",26000,Public,,1,0.2,,
+"BNY Mellon","Financial Services","240 Greenwich Street","New York","New York",10286,"United States","(212) 495-1784",www.bnymellon.com,"15,506",48500,Public,,8,0.2,4,0.2
+Synchrony,"Financial Services","777 Long Ridge Road",Stamford,Connecticut,06902,"United States","(203) 585-2400",www.synchrony.com,"15,456",16500,Public,,3,0.4,,
+Halliburton,"Energy Services and Equipment","3000 North Sam Houston Parkway East",Houston,Texas,77072,"United States","(281) 871-2699",www.halliburton.com,"15,295",40000,Public,,20,,2,
+"Waste Management",Environmental,"800 Capitol Street",Houston,Texas,77002,"United States","(713) 512-6200",www.wm.com,"15,218",48250,Public,,20,1.0,5,
+"Fidelity National Financial",Insurance,"601 Riverside Avenue",Jacksonville,Florida,32204,"United States","(904) 854-8100",www.fnf.com,"15,054",28290,Public,,29,1.0,8,0.6
+DTE,Utilities,"One Energy Plaza",Detroit,Michigan,48226,"United States","(313) 235-4000",www.dteenergy.com,"14,964",10400,Public,,4,,1,
+"Edison International",Utilities,"2244 Walnut Grove Avenue, PO Box 976",Rosemead,California,91770,"United States","(626) 302-2222",www.edison.com,"14,905",13303,Public,,2,,2,0.2
+Fiserv,"Information Technology","255 Fiserv Drive ",Brookfield,Wisconsin,53008,"United States","(800) 877-8021",www.fiserv.com,"14,852",44000,Public,"KKR & Co. L.P.",41,1.6,8,0.4
+BorgWarner,Automotive,"3850 Hamlin Road","Auburn Hills",Michigan,48326,"United States","(248) 754-9200",www.borgwarner.com,"14,838",49300,Public,,15,1.6,8,0.6
+Nordstrom,Retail,"1617 Sixth Avenue",Seattle,Washington,98101,"United States","(206) 628-2111",www.nordstrom.com,"14,789",72000,Public,,7,0.4,5,
+Principal,Insurance,"711 High Street","Des Moines",Idaho,50392,"United States","(515) 247-5111",www.principal.com,"14,742",17400,Public,,7,0.4,,
+AutoZone,Retail,"123 South Front Street ",Memphis,Tennessee,38103,"United States","(901) 495-6500",www.autozone.com,"14,630",60000,Public,,4,,2,0.4
+"Lam Research",Semiconductors,"4650 Cushing Parkway",Fremont,California,94538,"United States","(510) 572-0200",www.lamresearch.com,"14,626",16300,Public,,6,,,
+RGA,Insurance,"16600 Swingley Ridge Road",Chesterfield,Missouri,63017,"United States","(636) 736-7000",www.rgare.com,"14,596",3600,Public,,4,0.2,1,0.2
+"Stanley Black & Decker",Diversified,"1000 Stanley Drive","New Britain",Connecticut,06053,"United States","(860) 225-5111",www.stanleyblackanddecker.com,"14,535",53000,Public,,27,1.0,9,0.8
+ITW,Manufacturing,"155 Harlem Avenue",Glenview,Illinois,60025,"United States","(847) 724-7500",www.itw.com,"14,455",45000,Public,,48,0.2,13,0.6
+"The Estee Lauder Companies","Consumer Products","767 Fifth Avenue","New York","New York",10153,"United States","(212) 572-4200",www.elcompanies.com,"14,294",48000,Public,,15,0.2,1,
+Kellogg,Food,"1 Kellogg Square","Battle Creek",Michigan,49016,"United States","(269) 961-2000",www.kelloggcompany.com,"14,181",31000,Public,,15,0.2,4,0.4
+"Qurate Retail",E-Commerce,"12300 Liberty Blvd.",Englewood,Colorado,"80112 ","United States","(720) 875-5300",www.qurateretail.com,"14,177",26508,Public,,1,,,
+"Dominion Energy",Utilities,"120 Tredegar Street",Richmond,Virginia,23219,"United States","(804) 819-2000",www.dominionenergy.com,"14,172",17300,Public,,27,0.6,10,0.4
+Wayfair,E-Commerce,"4 Copley Place, 7th Floor",Boston,Massachusetts,02116,"United States","(617) 532-6100",www.wayfair.com,"14,145",16200,Public,,3,,1,0.2
+Jacobs,Engineering,"1999 Bryan Street Suite 1200",Dallas,Texas,75201,"United States","(214) 583-8500",www.jacobs.com,"14,093",52000,Public,,32,1.2,1,0.2
+Corning,Manufacturing,"One Riverfront Plaza",Corning,"New York",14831,"United States","(607) 974-9000",www.corning.com,"14,082",61200,Public,,17,,6,0.2
+PulteGroup,Construction,"3350 Peachtree Road NE Suite 1500",Atlanta,Georgia,30326,"United States","(404) 978-6400",www.pultegroupinc.com,"13,927",6182,Public,,3,0.2,,
+"FIS Global","Financial Services","601 Riverside Avenue",Jacksonville,Florida,32204,"United States","(904) 438-6000",www.fisglobal.com,"13,877",65000,Public,,19,0.4,4,0.4
+IQVIA,"Life Science","4820 Emperor Boulevard ",Durham,"North Carolina",27703,"United States","(919) 998-2000",www.iqvia.com,"13,874",79000,Public,,18,0.4,1,
+Marriott,Leisure,"10400 Fernwood Road",Bethesda,Maryland,20817,"United States","(301) 380-3000",www.marriott.com,"13,857",120000,Public,,3,0.2,3,0.2
+Berry,Plastics,"101 Oakley Street",Evansville,Indiana,47710,"United States","(812) 424-2904",www.berryglobal.com,"13,850",47000,Public,,14,0.4,2,0.4
+PPG,Chemicals,"One PPG Place",Pittsburgh,Pennsylvania,15272,"United States","(412) 434-3131",www.ppg.com,"13,834",46900,Public,,44,2.4,3,
+Ball,Packaging,"9200 West 108th Circle PO Box 5000",Westminster,Colorado,80021,"United States","(303) 469-3131",www.ball.com,"13,811",24300,Public,,13,0.2,5,0.6
+GAP,Apparel/Textiles,"2 Folsom Street","San Francisco",California,94105,"United States","(415) 427-0100",www.gapinc.com,"13,800",117000,Public,,7,0.6,4,0.6
+Loews,Diversified,"667 Madison Avenue","New York","New York",10065,"United States","(212) 521-2000",www.loews.com,"13,742",10340,Public,,1,,1,0.2
+Leidos,"Information Technology","1750 Presidents Street",Reston,Virginia,20190,"United States","(571) 526-6000",www.leidos.com,"13,737",43000,Public,"Lockheed Martin Corp.",17,1.4,3,0.2
+"Parker Hannifin",Machinery,"6035 Parkland Boulevard",Cleveland,Ohio,44124,"United States","(216) 896-3000",www.parker.com,"13,696",50520,Public,,73,0.4,10,0.8
+"Consolidated Edison",Utilities,"4 Irving Place","New York","New York",10003,"United States","(212) 460-4600",www.conedison.com,"13,676",13871,Public,,3,0.2,3,0.6
+"Ameriprise Financial","Financial Services","55 Ameriprise Financial Center",Minneapolis,Minnesota,55474,"United States","(612) 671-2052",www.ameriprise.com,"13,502",12000,Public,,6,0.2,1,0.2
+AECOM,"Business Services","300 South Grand Avenue 9th Floor","Los Angeles",California,90071,"United States","(213) 593-8100",www.aecom.com,"13,240",54000,Public,,12,0.2,5,0.8
+"Omnicom Group",Marketing,"280 Park Avenue","New York","New York",10017,"United States","(212) 415-3600",www.omnicomgroup.com,"13,171",64100,Public,,25,1.4,,
+LKQ,Automotive,"500 West Madison Street, Suite 2800",Chicago,Illinois,60661,"United States","(312) 621-1950",www.lkqcorp.com,"13,089",46000,Public,,44,0.6,3,0.2
+Markel,Insurance,"4521 Highwoods Parkway ","Glen Allen",Virginia,23060,"United States","(804) 747-0136",www.markel.com,"12,910",20300,Public,"Alliance Holdings",13,1.0,,
+Fox,Media,"1211 Avenue of the Americas","New York","New York",10036,"United States","(212) 852-7000",www.foxcorporation.com,"12,909",9000,Public,,4,0.8,,
+Carvana,E-Commerce,"1930 West Rio Salado Parkway",Tempe,Arizona,85281,"United States","(480) 719-8809",www.carvana.com,"12,814",21000,Public,,3,0.4,,
+"Baxter International","Medical Products","One Baxter Parkway",Deerfield,Illinois,60015,"United States","(224) 948-2000",www.baxter.com,"12,784",60000,Public,,20,1.0,5,
+OTIS,Machinery,"1 Carrier Place",Farmington,Connecticut,06032,"United States","(800) 233-6847",www.otis.com,"12,756",69000,Public,,5,0.2,,
+"Keurig Dr Pepper",Beverages,"53 South Avenue",Plano,Texas,01803,"United States","(781) 418-7000",www.keurigdrpepper.com,"12,683",27500,Public,,4,0.8,,
+"Ross Stores",Retail,"5130 Hacienda Drive",Dublin,California,94568,"United States","(925) 965-4400",www.rossstores.com,"12,532",93700,Public,,,,,
