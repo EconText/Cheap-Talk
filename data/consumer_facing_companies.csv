@@ -1,0 +1,11 @@
+,name,username,avg_tweet_length,num_unique_hashtags,avg_hashtags_per_tweet,most_common_hashtags
+0,"Bath & Body Works, Inc.",bathbodyworks,155.6359223300971,7,0.10679611650485436,"{'selfcare', 'WeLoveSale', 'TextureTuesday', 'GRWM', 'NationalPinkDay'}"
+1,Chipotle Mexican Grill,chipotletweets,126.75862068965517,1,0.13793103448275862,{'ChipotleBoorito'}
+2,Delta Air Lines,delta,135.07142857142858,2,0.35714285714285715,"{'DeltaRunwayRunway', 'LAFW'}"
+3,Disney,waltdisneyco,130.58666100254885,464,0.5751911639762107,"{'DisneyPlus', 'DisneyMagicMoments', 'D23Expo', 'Disney', 'DisneyFrozen'}"
+4,Expedia Group,ExpediaGroup,192.97632311977716,255,0.6573816155988857,"{'LifeAtExpediaGroup', 'expediapartners', 'lifeatexpedia', 'EGEXPLORE', 'travel'}"
+5,Ford Motor Company,ford,176.20884520884522,151,1.1646191646191646,"{'FordBronco', 'BuiltFordProud', 'F150Lightning', 'BuiltForAmerica', 'FordMustang'}"
+6,Hilton Worldwide,hiltonnewsroom,232.37145855194123,667,1.0083945435466946,"{'TravelwithPurpose', 'Hilton2030', 'FinanceFriday', 'Hilton100', 'WeAreHilton'}"
+7,Kellogg's,kelloggcompany,163.1136738056013,1144,1.1413509060955518,"{'3BillionBetterDays', 'CSRChat', 'BetterDays', 'COP21', 'KidsLiveWellChat'}"
+8,Netflix,netflix,131.67563739376772,259,0.28576487252124644,"{'StrangerThings', 'GeekedWeek', 'StrangerThings4', 'TUDUM', 'TheSandman'}"
+9,PepsiCo,PepsiCo,202.672532517215,374,0.6786534047436878,"{'PwP2025', 'PepsiCoFoundation', 'PEPearnings', 'TheCropGap', 'PepsiCoPositive'}"

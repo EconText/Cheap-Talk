@@ -1,0 +1,10 @@
+,name,username,avg_tweet_length,num_unique_hashtags,avg_hashtags_per_tweet,most_common_hashtags
+0,Broadcom Inc.,Broadcom,146.93570496083552,498,0.5881201044386423,"{'CES2014', 'ConnectingEverything', 'MWC14', 'IoT', 'CES2015'}"
+1,Caterpillar Inc.,caterpillarinc,216.82078169685414,383,0.776930409914204,"{'LetsDoTheWork', 'CatRacing', 'Caterpillar95', 'CatCONEXPO', 'CatTrials'}"
+2,Cisco,Cisco,203.57429287504476,1063,1.5721446473326173,"{'security', 'InclusiveFuture', 'HybridWork', 'WeAreCisco', 'Webex'}"
+3,Dow Inc.,DowNewsroom,212.13114198576753,1005,1.434090138935954,"{'NEWS', 'ANLiveris', 'Dow2025', 'TeamDow', 'SeekTogether'}"
+4,Intel,intel,181.72609400324149,406,1.1758508914100487,"{'IntelCore', 'IntelON', 'CES2020', 'AI', 'IntelEvo'}"
+5,Lockheed Martin,lockheedmartin,201.2526690391459,812,0.8378805852115461,"{'FighterFriday', 'FVL', 'LMAFB', 'F35', 'Artemis'}"
+6,Marathon Petroleum,MarathonPetroCo,177.20560747663552,1046,1.3186470850022252,"{'MPCGives', 'MPCArchives', 'MarathonPetroleum', 'ProudToBeMPC', 'JoinMPC'}"
+7,Moody's Corporation,MoodysInvSvc,256.28103119032465,798,1.2628898790579248,"{'MoodysESG', 'MoodysTalks', 'ESG', 'coronavirus', 'MoodysOutlooks2021'}"
+8,Salesforce,salesforce,226.40881590319793,157,0.8063958513396715,"{'Customer360', 'DF22', 'CNX22', 'TDX22', 'SalesforceTour'}"
