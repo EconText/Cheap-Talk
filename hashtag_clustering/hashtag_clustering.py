@@ -7,31 +7,33 @@ Passes that to a scikit learn agglomerative clustering algorithm to create hasht
 
 To run script:
 ipython
-run hashtag_clustering.py
+run hashtag_clustering.py [GICS Sector]
+(for example: run hashtag_clustering.py Energy)
 """
 import pandas as pd
 import numpy as np
 import os
 import datetime
 from collections import defaultdict
-from scipy import sparse 
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.metrics import silhouette_score
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pickle
+import sys
 
-def get_dataset_hashtags(data_folder: str):
+def get_dataset_hashtags(data_folder: str, tweet_csvs: list):
     """
     Parameters:
-    - data_folder: Filepath to the folder of company tweet CSVs whose hashtags we wish to analyze.
+    - data_folder: Filepath to the folder of company tweet CSVs.
+    - tweet_csvs:  List of filenames for the subset of CSVs that we actually want to cluster.
     
-    Returns a list of all unique hashtags used by all companies, lowercased and sorted alphabetically.
+    Returns a list of all unique hashtags used by all companies in tweet_csvs, lowercased and sorted alphabetically.
     (So each hashtag should only appear once in the list.)
     Also saves this list of hashtags as a pickle called 'all_hashtags.pkl'.
     """
     all_hashtags = set([])
-    for comp_csv in os.listdir(data_folder):
+    for comp_csv in tweet_csvs:
         print(f"Getting hashtags for {comp_csv}")
 
         df = pd.read_csv(f"{data_folder}/{comp_csv}", lineterminator='\n')
@@ -86,11 +88,12 @@ def process_hashtag_col_value(hashtag_col_val: str):
 
     return cleaned_hashtags_list
 
-def create_hashtag_dict(all_hashtags: list, data_folder: str):
+def create_hashtag_dict(all_hashtags: list, data_folder: str, tweet_csvs: list):
     """
     Parameters:
     - all_hashtags: A list of all unique hashtags used by all companies, lowercased and sorted alphabetically.
-    - data_folder:  Filepath to the folder of company tweet CSVs whose hashtags we wish to analyze.
+    - data_folder:  Filepath to the folder of company tweet CSVs.
+    - tweet_csvs:   List of filenames for the subset of CSVs that we actually want to cluster.
 
     Returns a nested dictionary representing hashtag co-occurrences
     (the number of times hashtag_i and hashtag_j appeared within -/+ 1 week of each other).
@@ -108,7 +111,7 @@ def create_hashtag_dict(all_hashtags: list, data_folder: str):
     """
     hashtag_dict = {tag: defaultdict(int) for tag in all_hashtags}
     
-    for comp_csv in os.listdir(data_folder):
+    for comp_csv in tweet_csvs:
         print(f"Updating hashtag dict for {comp_csv}")
         
         df = pd.read_csv(f"{data_folder}/{comp_csv}", lineterminator='\n')
@@ -251,8 +254,23 @@ def hashtag_agglomerative_clustering(hashtag_numpy_arr: np.ndarray, n_clusters: 
 if __name__ == "__main__":
     data_folder = "../data/tweets/ten_years"
 
-    # Get list of all hashtags in the company tweet CSVs in data_folder, sorted alphabetically.
-    all_hashtags = get_dataset_hashtags(data_folder)
+    GICS_sector = sys.argv[1]
+    
+    # Get list of all Twitter handles for companies in the GICS Sector.
+    sp_500_df = pd.read_csv(f"../sp_500_twitter_subsidiaries_manual_no_duplicates.csv")
+    sp_500_sector_df = sp_500_df.loc[sp_500_df['GICS Sector'] == GICS_sector]
+    sp_500_sector_with_twitter_df = sp_500_sector_df[sp_500_sector_df['Twitter Handle'].notna()]
+
+    twitter_handles = sp_500_sector_with_twitter_df['Twitter Handle']
+
+    # Get list of tweet CSVs for which to cluster hashtags.
+    tweet_csvs = []
+    for twitter_handle in twitter_handles:
+        tweet_csvs.append(f"{twitter_handle.lower()}_tweets.csv")
+    print(f"This script will analyze hashtags for these {len(tweet_csvs)} {GICS_sector} S&P 500 companies: {tweet_csvs}")
+
+    # Get list of all hashtags in the company tweet CSVs in tweet_csvs, sorted alphabetically.
+    all_hashtags = get_dataset_hashtags(data_folder, tweet_csvs)
     # Alternatively, load previously saved all_hashtags list.
     # with open('all_hashtags.pkl', 'rb') as f:
     #     all_hashtags = pickle.load(f)
@@ -260,12 +278,12 @@ if __name__ == "__main__":
 
     # Create a nested dictionary representing hashtag co-occurrences
     # (the number of times hashtag_i and hashtag_j appeared within -/+ 1 week of each other).
-    hashtag_dict = create_hashtag_dict(all_hashtags, data_folder)
+    hashtag_dict = create_hashtag_dict(all_hashtags, data_folder, tweet_csvs)
     # Alternatively, load previously saved hashtag_dict.
     # with open('hashtag_dict.pkl', 'rb') as f:
     #     hashtag_dict = pickle.load(f)
 
-    # Create a scipy CSR sparse matrix representing hashtag co-occurrences
+    # Create a dictionary representing hashtag co-occurrences
     # (the number of times hashtag_i and hashtag_j appeared within -/+ 1 week of each other).
     # This is a symmetric matrix where the rows represent hashtag_i and the columns represent hashtag_j.
     # Each cell located at (hashtag_i row, hashtag_j col) contains the count of the number of times hashtag_j appeared
@@ -273,7 +291,7 @@ if __name__ == "__main__":
     # The matrix rows and columns correspond to all_hashtags, sorted alphabetically.
     hashtag_df = create_hashtag_df(hashtag_dict)
     # Alternatively, load previously saved hashtag_df.
-    # hashtag_df = pd.read_csv(f"hashtag_cooccurrences.csv", lineterminator='\n')
+    # hashtag_df = pd.read_csv(f"hashtag_cooccurrences.csv")
 
     # Perform multiple rounds of agglomerative clustering on hashtag_df, using a range of clusters from 5 to 50.
     # Save the cluster labels from each round (ordered in the order of the hashtags in all_hashtags) in a file called "{n_clusters}_clusters_labels.npy".
@@ -286,6 +304,8 @@ if __name__ == "__main__":
 
     # Print cluster labels for each agglomerative clustering model.
     for cluster_count in cluster_counts:
+        print()
+        print(f"Labels for {cluster_count} clusters:")
         with open(f"{cluster_count}_clusters_labels.npy", 'rb') as f:
             cluster_labels = np.load(f)
             print(cluster_labels)
