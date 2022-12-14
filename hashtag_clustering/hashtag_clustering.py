@@ -151,7 +151,7 @@ def create_hashtag_dict(all_hashtags: list, data_folder: str):
                         
     return hashtag_dict
 
-def create_hashtag_matrix(hashtag_dict: dict, all_hashtags: list, hashtag_to_matrix_index_map: dict): 
+def create_hashtag_df(hashtag_dict: dict): 
     """
     Parameters:
     - hashtag_dict: A nested dictionary representing hashtag co-occurrences
@@ -164,59 +164,54 @@ def create_hashtag_matrix(hashtag_dict: dict, all_hashtags: list, hashtag_to_mat
                                     'breakthebias': defaultdict(<class 'int'>, {'earthday': 1, 'womenshistorymonth': 1}}
                     In this example, this means that the hashtags 'womenshistorymonth' and 'breakthebias' each appeared
                     in 1 tweet within -/+ 1 week of the hashtag with 'earthday'.
-    - all_hashtags: A list of all unique hashtags used by all companies, lowercased and sorted alphabetically.
 
-    Returns a scipy CSR sparse matrix representation of hashtag_dict.
-    This is a symmetric matrix where the rows represent hashtag_i and the columns represent hashtag_j.
-    Each cell located at (hashtag_i row, hashtag_j col) contains the count of the number of times hashtag_j appeared
-    within -/+ 1 week of hashtag_i.
-    The matrix rows and columns correspond to all_hashtags, sorted alphabetically.
-    We use a sparse matrix because we expect many 0's where two hashtags do not co-occur within 1 week of each other.
-
-    Also saves this sparse matrix as a file called "hashtag_matrix_sparse_csr.npz".
+    Returns a Pandas DataFrame representation of hashtag_dict, with rows and columns corresponding to hashtags sorted alphabetically
+    (so that they are ordered in the same way as all_hashtags).
+    Also saves this DataFrame as a CSV called 'hashtag_cooccurrences.csv'.
     """
-    # Create scipy CSR sparse matrix from hashtag_dict.
+    print("Creating hashtag dataframe from hashtag dict")
+
+    # Create Pandas DataFrame from hashtag_dict.
     # The rows represent hashtag_i and the columns represent hashtag_j.
     # Each cell located at (hashtag_i row, hashtag_j col) contains the count of the number of times hashtag_j appeared
     # within -/+ 1 week of hashtag_i.
-    X = sparse.csr_matrix((len(all_hashtags), len(all_hashtags)), dtype='uint8')
+    # If there is no entry for hashtag_dict[hashtag_i][hashtag_j], put a 0 in the dataframe for row hashtag_i and col hashtag_j.
+    df = pd.DataFrame.from_dict(hashtag_dict, orient="index").fillna(0).astype(int)
 
-    for hashtag_i in all_hashtags:
-        hashtag_i_index = hashtag_to_matrix_index_map[hashtag_i]
-        print(f"Creating hashtag matrix row for hashtag {hashtag_i_index}")
+    # Sort DataFrame alphabetically by index and column names.
+    df = df.reindex(index=sorted(df.index), columns=sorted(df.columns))
 
-        for hashtag_j in hashtag_dict[hashtag_i]:
-            hashtag_j_index = hashtag_to_matrix_index_map[hashtag_j]
-            X[hashtag_i_index, hashtag_j_index] = hashtag_dict[hashtag_i][hashtag_j]
+    # Save DataFrame as CSV file.
+    df.to_csv('hashtag_cooccurrences.csv', index=False)
 
-    # Save sparse csr_array as npz file
-    with open(f"hashtag_matrix_sparse_csr.npz", 'wb') as f:
-        sparse.save_npz(f, X, compressed=True)
+    return df
 
-    return X
-
-def find_optimal_num_of_clusters(hashtag_matrix: sparse.lil_matrix, cluster_counts: list):
+def find_optimal_num_of_clusters(hashtag_df: pd.DataFrame, cluster_counts: list):
     """
     Parameters:
-    - hashtag_matrix: A scipy CSR sparse matrix representation of hashtag_dict.
+    - hashtag_df:     A Pandas DataFrame representation of hashtag_dict, with rows and columns corresponding to hashtags sorted alphabetically
+                      (so that they are ordered in the same way as all_hashtags).
                       This is a symmetric matrix where the rows represent hashtag_i and the columns represent hashtag_j.
                       Each cell located at (hashtag_i row, hashtag_j col) contains the count of the number of times hashtag_j appeared
                       within -/+ 1 week of hashtag_i.
                       The matrix rows and columns correspond to all_hashtags, sorted alphabetically.
     - cluster_counts: A list of the numbers of clusters for which we want to attempt agglomerative clustering.
 
-    Performs multiple rounds of agglomerative clustering on hashtag_matrix, using a range of clusters from 5 to 50.
+    Performs multiple rounds of agglomerative clustering on hashtag_df, using a range of clusters from 5 to 50.
     Saves the cluster labels from each round (ordered in the order of the hashtags in all_hashtags) in a file called "{n_clusters}_clusters_labels.npy".
     Plots the silhouette scores for all rounds of agglomerative clustering so we can determine the optimal number of clusters.
     Saves that plot in a file called "cluster_silhouette_scores.png".
     The optimal number of clusters would have the highest silhouette score.
     """ 
+    print(f"Converting hashtag dataframe to numpy array")
+    hashtag_numpy_arr = hashtag_df.to_numpy()
+
     # Compute silhouette scores of the different agglomerative clustering models.
     silhouette_scores = []
     for cluster_count in cluster_counts:
-        cluster_labels = hashtag_agglomerative_clustering(hashtag_matrix, cluster_count)
+        cluster_labels = hashtag_agglomerative_clustering(hashtag_numpy_arr, cluster_count)
         silhouette_scores.append(
-            silhouette_score(hashtag_matrix, cluster_labels))
+            silhouette_score(hashtag_df, cluster_labels))
      
     # Plot silhouette scores as a line graph, in order to compare results.
     plt.plot(cluster_counts, silhouette_scores)
@@ -227,25 +222,26 @@ def find_optimal_num_of_clusters(hashtag_matrix: sparse.lil_matrix, cluster_coun
     plt.clf()
     plt.close()
 
-def hashtag_agglomerative_clustering(hashtag_matrix: sparse.lil_matrix, n_clusters: int):
+def hashtag_agglomerative_clustering(hashtag_numpy_arr: np.ndarray, n_clusters: int):
     """
     Helper function for find_optimal_num_of_clusters.
 
     Parameters:
-    - hashtag_matrix: A scipy CSR sparse matrix representation of hashtag_dict.
-                      This is a symmetric matrix where the rows represent hashtag_i and the columns represent hashtag_j.
-                      Each cell located at (hashtag_i row, hashtag_j col) contains the count of the number of times hashtag_j appeared
-                      within -/+ 1 week of hashtag_i.
-                      The matrix rows and columns correspond to all_hashtags, sorted alphabetically.
-    - n_clusters:     The number of clusters to use for agglomerative clustering.
+    - hashtag_numpy_arr: A numpy array representation of hashtag_dict, with rows and columns corresponding to hashtags sorted alphabetically
+                         (so that they are ordered in the same way as all_hashtags).
+                         This is a symmetric matrix where the rows represent hashtag_i and the columns represent hashtag_j.
+                         Each cell located at (hashtag_i row, hashtag_j col) contains the count of the number of times hashtag_j appeared
+                         within -/+ 1 week of hashtag_i.
+                         The matrix rows and columns correspond to all_hashtags, sorted alphabetically.
+    - n_clusters: The number of clusters to use for agglomerative clustering.
 
-    Performs agglomerative clustering on hashtag_matrix, using n_clusters number of clusters.
+    Performs agglomerative clustering on hashtag_df, using n_clusters number of clusters.
     Returns and saves the cluster labels (ordered in the order of the hashtags in all_hashtags) in a file called "{n_clusters}_clusters_labels.npy".
     """ 
     print(f"Performing agglomerative clustering for {n_clusters} clusters")
     clustering_model = AgglomerativeClustering(n_clusters=n_clusters)
 
-    cluster_labels = clustering_model.fit_predict(hashtag_matrix.toarray())
+    cluster_labels = clustering_model.fit_predict(hashtag_numpy_arr)
 
     with open(f"{n_clusters}_clusters_labels.npy", 'wb') as f:
         np.save(f, cluster_labels)
@@ -269,36 +265,24 @@ if __name__ == "__main__":
     # with open('hashtag_dict.pkl', 'rb') as f:
     #     hashtag_dict = pickle.load(f)
 
-    # Create a dictionary mapping each hashtag to its index in all_hashtags list
-    # (which is the same as the hashtag's row / column index in the matrix we will make soon).
-    print("Creating hashtag matrix index map")  
-    hashtag_to_matrix_index_map = {hashtag: index for index, hashtag in enumerate(all_hashtags)}
-    # Save hashtag_to_matrix_index_map as pickle file.
-    with open('hashtag_to_matrix_index_map.pkl', 'wb') as f:
-        pickle.dump(hashtag_to_matrix_index_map, f, protocol=pickle.HIGHEST_PROTOCOL)
-    # Alternatively, load previously saved hashtag_to_matrix_index_map.
-    # with open('hashtag_to_matrix_index_map.pkl', 'rb') as f:
-    #     hashtag_to_matrix_index_map = pickle.load(f)
-
     # Create a scipy CSR sparse matrix representing hashtag co-occurrences
     # (the number of times hashtag_i and hashtag_j appeared within -/+ 1 week of each other).
     # This is a symmetric matrix where the rows represent hashtag_i and the columns represent hashtag_j.
     # Each cell located at (hashtag_i row, hashtag_j col) contains the count of the number of times hashtag_j appeared
     # within -/+ 1 week of hashtag_i.
     # The matrix rows and columns correspond to all_hashtags, sorted alphabetically.
-    hashtag_matrix = create_hashtag_matrix(hashtag_dict, all_hashtags, hashtag_to_matrix_index_map)
-    # Alternatively, load previously saved hashtag_matrix.
-    # with open('hashtag_matrix_sparse_csr.npz', 'rb') as f:
-    #     hashtag_matrix = sparse.load_npz(f)
+    hashtag_df = create_hashtag_df(hashtag_dict)
+    # Alternatively, load previously saved hashtag_df.
+    # hashtag_df = pd.read_csv(f"hashtag_cooccurrences.csv", lineterminator='\n')
 
-    # Perform multiple rounds of agglomerative clustering on hashtag_matrix, using a range of clusters from 5 to 50.
+    # Perform multiple rounds of agglomerative clustering on hashtag_df, using a range of clusters from 5 to 50.
     # Save the cluster labels from each round (ordered in the order of the hashtags in all_hashtags) in a file called "{n_clusters}_clusters_labels.npy".
     # Plot the silhouette scores for all rounds of agglomerative clustering so we can determine the optimal number of clusters.
     # Save that plot in a file called "cluster_silhouette_scores.png".
     # The optimal number of clusters would have the highest silhouette score.
     cluster_counts = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 
-    find_optimal_num_of_clusters(hashtag_matrix, cluster_counts)
+    find_optimal_num_of_clusters(hashtag_df, cluster_counts)
 
     # Print cluster labels for each agglomerative clustering model.
     for cluster_count in cluster_counts:
