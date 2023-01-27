@@ -157,7 +157,7 @@ if __name__ == "__main__":
     cluster_counts = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
 
     for cluster_count in cluster_counts:
-        with open(f"{cluster_count}_clusters_labels.npy", 'rb') as f:
+        with open(f"cluster_labels/{cluster_count}_clusters_labels.npy", 'rb') as f:
             cluster_labels = np.load(f)
             
         create_wordclouds(cluster_count, hashtag_counter, all_hashtags, cluster_labels)
