@@ -6,9 +6,11 @@ Uses cluster label files saved with '.npy' extension.
 
 To run script:
 ipython
-run cluster_wordclouds.py [GICS Sector]
-where GICS Sector is the sector of the companies whose hashtags we actually clustered.
-(for example: run cluster_wordclouds.py Energy)
+run cluster_wordclouds.py [Cluster Folder Name] [GICS Sector]
+where 1) Cluster Folder Name is the name of the folder containing the cluster_labels subfolder of interest,
+and also the wordclouds subfolder where the wordclouds produced will be saved,
+and 2) GICS Sector is the sector of the companies whose hashtags we actually clustered.
+(for example: run cluster_wordclouds.py dbscan Energy)
 """
 import sys
 import pickle
@@ -78,13 +80,14 @@ def process_hashtag_col_value(hashtag_col_val: str):
 
     return cleaned_hashtags_list
 
-def create_wordclouds(cluster_count: int, hashtag_counter: Counter, all_hashtags: list, cluster_labels: np.ndarray):
+def create_wordclouds(hashtag_counter: Counter, all_hashtags: list, cluster_labels: np.ndarray, cluster_folder: str, cluster_count=None):
     """
     Parameters:
     - cluster_count:   The number of clusters in the agglomerative clustering model for which this function should create word clouds.
     - hashtag_counter: A Counter of all lowercased hashtags used by all companies in tweet_csvs, telling us how many times each hashtag appeared in tweet_csvs.
     - all_hashtags:    A list of all unique hashtags used by all companies in tweet_csvs, lowercased and sorted alphabetically.
     - cluster_labels:  A numpy array of the agglomerative clustering model labels, ordered corresponding to all_hashtags.
+    - cluster_folder:  A string representing the name of the folder containing the cluster_labels and wordclouds subfolders.
 
     For each cluster, creates a word cloud showing the frequency of the hashtags in that cluster,
     saving the word cloud in the wordclouds folder as "{cluster_count}_clusters_cluster_{label}_wordcloud.png".
@@ -102,8 +105,12 @@ def create_wordclouds(cluster_count: int, hashtag_counter: Counter, all_hashtags
             
     # Generate, plot, and save a word cloud for each cluster.
     print()
-    for label in unique_cluster_labels:   
-        print(f"Generating word cloud for {cluster_count} clusters cluster {label}") 
+    for label in unique_cluster_labels:  
+        if cluster_count is not None: 
+            print(f"Generating word cloud for {cluster_count} clusters cluster {label}")
+        else:
+            print(f"Generating word cloud for cluster {label}")
+
         cloud = WordCloud(width = 800, height = 800,
                         background_color ='white',
                         stopwords = set(STOPWORDS),
@@ -116,15 +123,24 @@ def create_wordclouds(cluster_count: int, hashtag_counter: Counter, all_hashtags
         
         plt.show()
 
-        plt.savefig(f"wordclouds/{cluster_count}_clusters_cluster_{label}_wordcloud.png")
+        if cluster_count is not None:
+            plt.savefig(f"{cluster_folder}/wordclouds/{cluster_count}_clusters_cluster_{label}_wordcloud.png")
+        else:  # in the case of dbscan
+            plt.savefig(f"{cluster_folder}/wordclouds/cluster_{label}_wordcloud.png")
 
 if __name__ == "__main__":
     data_folder = "../data/tweets/ten_years"
 
+
+    ##########################################################################
+    # Get folder where cluster_labels and wordclouds subfolders are located. #
+    ##########################################################################
+    cluster_folder = sys.argv[1]
+
     ####################################################################################################
     # Get a list of the tweet CSVs we are interested in (those belonging to a particular GICS sector). #
     ####################################################################################################
-    GICS_sector = sys.argv[1]
+    GICS_sector = sys.argv[2]
     
     # Get list of all Twitter handles for companies in the GICS Sector.
     sp_500_df = pd.read_csv(f"../sp_500_twitter_subsidiaries_manual_no_duplicates.csv")
@@ -154,10 +170,19 @@ if __name__ == "__main__":
     ####################################################################################################################################################
     # For each agglomerative clustering model (each has a different number of clusters), generate a group of word clouds (one word cloud per cluster). #
     ####################################################################################################################################################
-    cluster_counts = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
-
-    for cluster_count in cluster_counts:
-        with open(f"cluster_labels/{cluster_count}_clusters_labels.npy", 'rb') as f:
+    
+    # DB Scan automatically creates its own number of clusters
+    if cluster_folder == "dbscan":
+        with open(f"{cluster_folder}/cluster_labels/clusters_labels.npy", 'rb') as f:
             cluster_labels = np.load(f)
             
-        create_wordclouds(cluster_count, hashtag_counter, all_hashtags, cluster_labels)
+        create_wordclouds(hashtag_counter, all_hashtags, cluster_labels, cluster_folder)
+
+    else:
+        cluster_counts = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+
+        for cluster_count in cluster_counts:
+            with open(f"{cluster_folder}/cluster_labels/{cluster_count}_clusters_labels.npy", 'rb') as f:
+                cluster_labels = np.load(f)
+                
+            create_wordclouds(hashtag_counter, all_hashtags, cluster_labels, cluster_folder, cluster_count=cluster_count)
