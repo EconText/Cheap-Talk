@@ -6,7 +6,7 @@ Gets a list of all unique hashtags in the tweets for those companies.
 Creates a co-occurrence matrix of hashtag i and hashtag j being tweeted by the same company in the timeframe of 1 week.
 Normalizes and inverts that matrix to obtain a numpy array distance matrix where values are between 0 and 1,
 and values closer to 0 mean hashtags occur more frequently together.
-Passes that numpy array distance matrix to a scikit-learn k-means clustering algorithm to create hashtag clusters.
+Passes that numpy array distance matrix to a scikit-learn DBSCAN clustering algorithm to create hashtag clusters.
 
 To run script:
 ipython
@@ -20,7 +20,7 @@ import pandas as pd
 import numpy as np
 from collections import defaultdict
 import datetime
-from sklearn.cluster import KMeans
+from sklearn.cluster import DBSCAN
 from sklearn.metrics import silhouette_score
 import matplotlib.pyplot as plt
 
@@ -228,7 +228,7 @@ def normalize_and_invert_matrix(hashtag_matrix: np.ndarray):
 
     return normalized_and_inverted_matrix
 
-def find_optimal_num_of_clusters(hashtag_matrix: np.ndarray, cluster_counts: list):
+def hashtag_dbscan_clustering(hashtag_matrix: np.ndarray):
     """
     Parameters:
     - hashtag_matrix: A numpy array representation of hashtag_dict, with rows and columns corresponding to hashtags sorted alphabetically
@@ -238,55 +238,16 @@ def find_optimal_num_of_clusters(hashtag_matrix: np.ndarray, cluster_counts: lis
                       within -/+ 1 week of hashtag_i for the same company.
                       Note that this is a distance matrix that has been normalized with values between 0 and 1,
                       and with values closer to 0 meaning two hashtags occurring more frequently together.
-    - cluster_counts: A list of the numbers of clusters for which we want to attempt k-means clustering.
 
-    Creates multiple k-means clustering models using hashtag_matrix and a range of clusters from 5 to 50.
-    Saves each model's cluster labels (which are ordered in the order of the hashtags in all_hashtags) in a file called "{n_clusters}_clusters_labels.npy".
-    Plots the silhouette scores for all k-means clustering models so we can determine the optimal number of clusters.
-    Saves that plot in a file called "cluster_silhouette_scores.png".
-    The optimal number of clusters should theoretically have the highest silhouette score.
+    Performs DBSCAN clustering on hashtag_matrix.
+    Returns and saves the cluster labels (which are ordered in the order of the hashtags in all_hashtags) in a file called "clusters_labels.npy".
     """ 
-
-    # Create multiple k-means clustering models, each with a different number of clusters.
-    # Also compute silhouette scores of the different k-means clustering models.
-    # TODO: silhouette_score function is being slow. Bring it back?
-    # silhouette_scores = []
-    for cluster_count in cluster_counts:
-        cluster_labels = hashtag_kmeans_clustering(hashtag_matrix, cluster_count)
-        # silhouette_scores.append(silhouette_score(hashtag_matrix, cluster_labels))
-     
-    # Plot silhouette scores as a line graph, in order to compare results for our various k-means clustering models.
-    # plt.plot(cluster_counts, silhouette_scores)
-    # plt.xlabel('Number of clusters', fontsize = 20)
-    # plt.ylabel('Silhouette scores', fontsize = 20)
-    # plt.savefig("cluster_silhouette_scores.png")
-    # plt.cla()
-    # plt.clf()
-    # plt.close()
-
-def hashtag_kmeans_clustering(hashtag_matrix: np.ndarray, n_clusters: int):
-    """
-    Helper function for find_optimal_num_of_clusters.
-
-    Parameters:
-    - hashtag_matrix: A numpy array representation of hashtag_dict, with rows and columns corresponding to hashtags sorted alphabetically
-                      (so that they are ordered in the same way as all_hashtags).
-                      This is a symmetric matrix where the rows represent hashtag_i and the columns represent hashtag_j.
-                      Each cell located at (hashtag_i row, hashtag_j col) contains the count of the number of times hashtag_j appeared
-                      within -/+ 1 week of hashtag_i for the same company.
-                      Note that this is a distance matrix that has been normalized with values between 0 and 1,
-                      and with values closer to 0 meaning two hashtags occurring more frequently together.
-    - n_clusters: The number of clusters to use for k-mean clustering.
-
-    Performs k-means clustering on hashtag_matrix, using n_clusters number of clusters.
-    Returns and saves the cluster labels (which are ordered in the order of the hashtags in all_hashtags) in a file called "{n_clusters}_clusters_labels.npy".
-    """ 
-    print(f"Performing k-means clustering for {n_clusters} clusters")
-    clustering_model = KMeans(n_clusters=n_clusters)
+    print(f"Performing DBSCAN clustering")
+    clustering_model = DBSCAN()
 
     cluster_labels = clustering_model.fit_predict(hashtag_matrix)
 
-    with open(f"cluster_labels/{n_clusters}_clusters_labels.npy", 'wb') as f:
+    with open(f"cluster_labels/clusters_labels.npy", 'wb') as f:
         np.save(f, cluster_labels)
 
     return cluster_labels
@@ -330,7 +291,7 @@ if __name__ == "__main__":
     # ################################################################################################################
     # hashtag_dict = create_hashtag_dict(all_hashtags, data_folder, tweet_csvs)
     # # Alternatively, load previously saved hashtag_dict.
-    with open('hashtag_dict.pkl', 'rb') as f:
+    with open('../hashtag_dict.pkl', 'rb') as f:
         hashtag_dict = pickle.load(f)
 
     ##################################################################
@@ -352,24 +313,18 @@ if __name__ == "__main__":
     normalized_and_inverted_hashtag_matrix = normalize_and_invert_matrix(hashtag_matrix)
 
     #############################
-    # K-Means Clustering. #
+    # DBSCAN Clustering. #
     #############################
-    # Perform multiple rounds of k-means clustering on hashtag_matrix, using a range of clusters from 5 to 50.
-    # Save the cluster labels from each round (ordered in the order of the hashtags in all_hashtags) in a file called "{n_clusters}_clusters_labels.npy".
-    # Plot the silhouette scores for all rounds of k-means clustering so we can determine the optimal number of clusters.
-    # Save that plot in a file called "cluster_silhouette_scores.png".
-    # The optimal number of clusters would have the highest silhouette score.
-    cluster_counts = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
-
-    find_optimal_num_of_clusters(normalized_and_inverted_hashtag_matrix, cluster_counts)
+    # Perform DBSCAN clustering on hashtag_matrix.
+    # Save the cluster labels (ordered in the order of the hashtags in all_hashtags) in a file called "clusters_labels.npy".
+    hashtag_dbscan_clustering(normalized_and_inverted_hashtag_matrix)
 
     ##################################################################
-    # Print cluster labels for each k-means clustering model. #
+    # Print cluster labels for the DBSCAN clustering model. #
     ##################################################################
-    for cluster_count in cluster_counts:
-        print()
-        print(f"Labels for {cluster_count} clusters:")
-        with open(f"{cluster_count}_clusters_labels.npy", 'rb') as f:
-            cluster_labels = np.load(f)
-            print(cluster_labels)
+    print()
+    print(f"Labels for clusters:")
+    with open(f"cluster_labels/clusters_labels.npy", 'rb') as f:
+        cluster_labels = np.load(f)
+        print(cluster_labels)
         
