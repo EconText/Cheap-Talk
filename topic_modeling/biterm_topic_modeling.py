@@ -23,6 +23,8 @@ if __name__ == "__main__":
     NUM_TOPICS = int(sys.argv[1])
     MODEL_TYPE = sys.argv[2].lower()
 
+    MODEL_FOLDER = f"{NUM_TOPICS}_topics_model"
+
     ############################################################
     # CHECK WHETHER TO RUN NEW MODEL OR TO LOAD PRESAVED MODEL #
     ############################################################
@@ -31,7 +33,7 @@ if __name__ == "__main__":
         # IMPORT DATA #
         ###############
         # Read text from all S&P 500 tweets into a Python list.
-        data_folder = "../data/tweets/ten_years"
+        data_folder = "../data/tweets/ten_years_en"
         texts = []
         for comp_csv in os.listdir(data_folder):
             print(f"Reading tweets from CSV: {comp_csv}")
@@ -87,7 +89,7 @@ if __name__ == "__main__":
         ##################
         # Save the model.
         print("Pickling the model")
-        with open(f"model_{NUM_TOPICS}topics.pkl", "wb") as file:
+        with open(f"{MODEL_FOLDER}/model.pkl", "wb") as file:
             pickle.dump(model, file)
     else:
         #########################################
@@ -95,7 +97,7 @@ if __name__ == "__main__":
         #########################################
         # Load the model.
         print("Loading presaved model")
-        with open(f"model_{NUM_TOPICS}topics.pkl", "rb") as file:
+        with open(f"{MODEL_FOLDER}/model.pkl", "rb") as file:
             model = pickle.load(file)
 
     ##########
@@ -108,7 +110,7 @@ if __name__ == "__main__":
     docs_top_topic = model.labels_
 
     print("Saving the most probable topic for each document")
-    np.save(f"model_{NUM_TOPICS}topics_docs_top_topic.npy", docs_top_topic)
+    np.save(f"{MODEL_FOLDER}/docs_top_topic.npy", docs_top_topic)
 
     ###########
     # METRICS #
