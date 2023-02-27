@@ -1,6 +1,6 @@
 """
 This script trains a biterm topic model on the S&P 500 tweets located
-in the ../data/tweets/ten_years folder, treating each tweet as a single document.
+in the ../data/tweets/ten_years_en folder, treating each tweet as a single document.
 
 To run script:
 ipython
