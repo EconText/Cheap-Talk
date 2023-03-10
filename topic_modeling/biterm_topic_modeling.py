@@ -23,22 +23,36 @@ if __name__ == "__main__":
     NUM_TOPICS = int(sys.argv[1])
     MODEL_TYPE = sys.argv[2].lower()
 
-    MODEL_FOLDER = f"{NUM_TOPICS}_topics_model"
+    MODEL_FOLDER = f"{NUM_TOPICS}_topics_model_new"
 
-    ############################################################
-    # CHECK WHETHER TO RUN NEW MODEL OR TO LOAD PRESAVED MODEL #
-    ############################################################
+    ##############################################################
+    # CHECK WHETHER TO TRAIN NEW MODEL OR TO LOAD PRESAVED MODEL #
+    ##############################################################
     if MODEL_TYPE == "new":
         ###############
         # IMPORT DATA #
         ###############
         # Read text from all S&P 500 tweets into a Python list.
+        # Also create and save comp_to_tweet_id_to_doc_num_map dictionary mapping
+        # company CSV filename to inner dictionary mapping tweet ID to document number.
+        # (needed for company topic proportion analysis).
         data_folder = "../data/tweets/ten_years_en"
         texts = []
+        comp_to_tweet_id_to_doc_num_map = {}
+        doc_num = 0
         for comp_csv in os.listdir(data_folder):
             print(f"Reading tweets from CSV: {comp_csv}")
             df = pd.read_csv(f"{data_folder}/{comp_csv}", lineterminator='\n')
             texts += df['text'].str.strip().tolist()
+
+            comp_to_tweet_id_to_doc_num_map[comp_csv] = {}
+            for tweet_id in df['tweet_id']:
+                comp_to_tweet_id_to_doc_num_map[comp_csv][tweet_id] = doc_num
+                doc_num += 1
+            
+        print("Pickling comp_to_tweet_id_to_doc_num_map")
+        with open(f"{MODEL_FOLDER}/comp_to_tweet_id_to_doc_num_map.pkl", "wb") as file:
+            pickle.dump(comp_to_tweet_id_to_doc_num_map, file)
 
         #################
         # PREPROCESSING #
@@ -100,12 +114,23 @@ if __name__ == "__main__":
         with open(f"{MODEL_FOLDER}/model.pkl", "rb") as file:
             model = pickle.load(file)
 
-    ##########
-    # LABELS #
-    ##########
-    # Get the most probable topic for each document.
+    ####################################
+    # GET CSV OF TOP N WORDS PER TOPIC #
+    ####################################
+    word_count_per_topic = 50  
+    print(f"Getting the top {word_count_per_topic} words per topic")
+    top_words = btm.get_top_topic_words(model, words_num=word_count_per_topic)
+
+    print(f"Saving the top {word_count_per_topic} words per topic")
+    top_words.to_csv(f"{MODEL_FOLDER}/top_{word_count_per_topic}_words_per_topic.csv")
+
+    ################################################################
+    # GET NUMPY ARRAY OF THE MOST PROBABLE TOPIC FOR EACH DOCUMENT #
+    ################################################################
+    # docs_top_topic will be a 1D numpy array, where the element at index i
+    # is the topic number of the most probable topic for document i.
     print("Getting the most probable topic for each document")
-    # btm.get_docs_top_topic(texts, model.matrix_docs_topics_)
+    # docs_top_topic = btm.get_docs_top_topic(texts, model.matrix_docs_topics_)
     # or
     docs_top_topic = model.labels_
 
