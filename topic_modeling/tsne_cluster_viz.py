@@ -54,7 +54,7 @@ if __name__ == "__main__":
     # Needed for color-coding the plot by cluster.
     with open(f"{PATH}/company_to_cluster_map.pkl", "rb") as file:
         company_to_cluster_map = pickle.load(file)
-    clusters = [company_to_cluster_map[company] for company in companies]
+    clusters = [company_to_cluster_map[company.strip()] for company in companies]
 
     print("Counts in each cluster:", list(clusters.count(cluster) for cluster in range(NUM_CLUSTERS)))
     print("Set of clusters:", set(clusters))
@@ -78,5 +78,14 @@ if __name__ == "__main__":
     # PLOT THE RESULTING T-SNE MATRIX, COLOR-CODING BY CLUSTER #
     ###########################################################
     plt.figure()
-    plot = sns.scatterplot(x=tsne_matrix[:,0], y=tsne_matrix[:,1], hue=clusters)
+    clusters_as_strs = [str(i) for i in clusters]
+    hue_order = [str(i) for i in range(10)]
+    plot = sns.scatterplot(x=tsne_matrix[:,0],
+                           y=tsne_matrix[:,1],
+                           hue=clusters_as_strs,
+                           hue_order=hue_order,
+                           palette="Set2")
+
+    # moving legend - https://www.statology.org/seaborn-legend-outside/
+    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=5)
     plt.savefig(f"{PATH}/tsne_cluster_viz.png")
