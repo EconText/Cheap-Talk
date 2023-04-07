@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
         sector = row["GICS Sector"]
         
-        company_to_sector_map[csv_name] = sector
+        company_to_sector_map[csv_name.strip()] = sector
     
     ##############################################################################
     # CREATE DATAFRAME LISTING THE SECTORS FOR ALL THE COMPANIES IN EACH CLUSTER #
