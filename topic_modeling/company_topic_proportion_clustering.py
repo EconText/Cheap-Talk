@@ -4,7 +4,9 @@ This script performs clustering based on the company topic proportions
 from that company have that topic as their most probable topic?)
 found in company_topic_proportions.csv.
 Saves the clustering model, the cluster labels, and a dictionary mapping company names to cluster labels.
-Outputs a CSV of each cluster's center, as well as a CSV of the companies in each cluster.
+Outputs a CSV of each cluster's center
+(a CSV where the top row consists of topic number labels, and each of the following rows corresponds to the center for one cluster),
+as well as a CSV of the companies in each cluster.
 
 To run script:
 ipython
