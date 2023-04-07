@@ -3,7 +3,8 @@ This script performs clustering based on the company topic proportions
 (for each company, for each topic, what proportion of the tweets
 from that company have that topic as their most probable topic?)
 found in company_topic_proportions.csv.
-Outputs a CSV of the companies in each cluster.
+Saves the clustering model, the cluster labels, and a dictionary mapping company names to cluster labels.
+Outputs a CSV of each cluster's center, as well as a CSV of the companies in each cluster.
 
 To run script:
 ipython
@@ -15,21 +16,9 @@ import sys
 import pandas as pd
 import numpy as np
 import pickle
+import csv
 
 from sklearn.cluster import KMeans
-
-def kmeans_clustering(matrix: np.ndarray, n_clusters: int):
-    """
-    Parameters:
-    - matrix: A numpy array to cluster.
-    - n_clusters: The number of clusters to use for clustering.
-
-    Performs k-means clustering on matrix, using n_clusters number of clusters. Returns the cluster labels.
-    """ 
-    print(f"Performing k-means clustering for {n_clusters} clusters")
-    clustering_model = KMeans(n_clusters=n_clusters)
-    cluster_labels = clustering_model.fit_predict(matrix)
-    return cluster_labels
 
 if __name__ == "__main__":
     ###############################
@@ -53,16 +42,32 @@ if __name__ == "__main__":
     ######################
     # PERFORM CLUSTERING #
     ######################
-    cluster_labels = kmeans_clustering(company_topic_proportions_df, n_clusters=NUM_CLUSTERS)
+    print(f"Performing k-means clustering for {NUM_CLUSTERS} clusters")
+    clustering_model = KMeans(n_clusters=NUM_CLUSTERS)
+    cluster_labels = clustering_model.fit_predict(company_topic_proportions_df)
+    cluster_centers = clustering_model.cluster_centers_
     
+    # Save the model.
+    with open(f"{PATH}/model.pkl", "wb") as f:
+        pickle.dump(clustering_model, f)
+    
+    # Save the cluster labels.
     with open(f"{PATH}/cluster_labels.npy", 'wb') as f:
         np.save(f, cluster_labels)
+
+    # Save the cluster centers.
+    # This will be a CSV where the top row consists of topic number labels,
+    # and each of the following rows corresponds to the center for one cluster.
+    with open(f"{PATH}/cluster_centers.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(list(range(NUM_TOPICS)))
+        writer.writerows(cluster_centers)
     
     #########################################
     # CREATE MAP FROM INDEX TO COMPANY NAME #
     #########################################
     # Index is the index of the cluster label for the company in cluster_labels.
-    index_to_company_map = {idx: company for idx, company in enumerate(company_topic_proportions_df.index)}
+    index_to_company_map = {idx: company.strip() for idx, company in enumerate(company_topic_proportions_df.index)}
 
     ################################################################################
     # CREATE AND SAVE DICTIONARY MAPPING COMPANY NAMES TO CLUSTER LABELS / NUMBERS #
@@ -72,10 +77,10 @@ if __name__ == "__main__":
         company = index_to_company_map[idx]
         cluster_label = cluster_labels[idx]
         
-        company_to_cluster_map[company] = cluster_label
+        company_to_cluster_map[company.strip()] = cluster_label
         
-    with open(f"{PATH}/company_to_cluster_map.pkl", "wb") as file:
-        pickle.dump(company_to_cluster_map, file)
+    with open(f"{PATH}/company_to_cluster_map.pkl", "wb") as f:
+        pickle.dump(company_to_cluster_map, f)
         
     ###################################################################
     # CREATE AND SAVE CSV OF COMPANIES IN EACH CLUSTER LABEL / NUMBER #
