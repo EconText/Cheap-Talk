@@ -23,7 +23,7 @@ if __name__ == "__main__":
     NUM_TOPICS = int(sys.argv[1])
     MODEL_TYPE = sys.argv[2].lower()
 
-    MODEL_FOLDER = f"{NUM_TOPICS}_topics_model_new"
+    MODEL_FOLDER = f"{NUM_TOPICS}_topics_model"
 
     ##############################################################
     # CHECK WHETHER TO TRAIN NEW MODEL OR TO LOAD PRESAVED MODEL #
@@ -33,14 +33,21 @@ if __name__ == "__main__":
         # IMPORT DATA #
         ###############
         # Read text from all S&P 500 tweets into a Python list.
+
         # Also create and save comp_to_tweet_id_to_doc_num_map dictionary mapping
         # company CSV filename to inner dictionary mapping tweet ID to document number.
         # (needed for company topic proportion analysis).
+
+        # And save the same information in a doc_num_to_comp_tweet_id_tuple_map dictionary
+        # that maps the other way: document number to (company CSV filename, tweet ID) tuple
+        # (needed for top n documents per topic analysis).
         data_folder = "../data/tweets/ten_years_en"
         texts = []
         comp_to_tweet_id_to_doc_num_map = {}
+        doc_num_to_comp_tweet_id_tuple_map = {}
         doc_num = 0
         for comp_csv in os.listdir(data_folder):
+            print(comp_csv)
             print(f"Reading tweets from CSV: {comp_csv}")
             df = pd.read_csv(f"{data_folder}/{comp_csv}", lineterminator='\n')
             texts += df['text'].str.strip().tolist()
@@ -48,11 +55,16 @@ if __name__ == "__main__":
             comp_to_tweet_id_to_doc_num_map[comp_csv] = {}
             for tweet_id in df['tweet_id']:
                 comp_to_tweet_id_to_doc_num_map[comp_csv][tweet_id] = doc_num
+                doc_num_to_comp_tweet_id_tuple_map[doc_num] = (comp_csv, tweet_id)
                 doc_num += 1
             
         print("Pickling comp_to_tweet_id_to_doc_num_map")
         with open(f"{MODEL_FOLDER}/comp_to_tweet_id_to_doc_num_map.pkl", "wb") as file:
             pickle.dump(comp_to_tweet_id_to_doc_num_map, file)
+
+        print("Pickling doc_num_to_comp_tweet_id_tuple_map")
+        with open(f"{MODEL_FOLDER}/doc_num_to_comp_tweet_id_tuple_map.pkl", "wb") as file:
+            pickle.dump(doc_num_to_comp_tweet_id_tuple_map, file)
 
         #################
         # PREPROCESSING #
@@ -123,6 +135,13 @@ if __name__ == "__main__":
 
     print(f"Saving the top {word_count_per_topic} words per topic")
     top_words.to_csv(f"{MODEL_FOLDER}/top_{word_count_per_topic}_words_per_topic.csv")
+
+    ################################################
+    # GET TOPICS VS DOCUMENTS PROBABILITIES MATRIX #
+    ################################################
+    # In this matrix, there is a row for each topic, and a column for each document.
+    print("Saving the topics vs. documents probabilities matrix")
+    np.save(f"{MODEL_FOLDER}/matrix_topics_docs.npy", model.matrix_topics_docs_)
 
     ################################################################
     # GET NUMPY ARRAY OF THE MOST PROBABLE TOPIC FOR EACH DOCUMENT #
