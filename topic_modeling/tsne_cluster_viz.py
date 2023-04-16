@@ -79,13 +79,13 @@ if __name__ == "__main__":
     ###########################################################
     plt.figure()
     clusters_as_strs = [str(i) for i in clusters]
-    hue_order = [str(i) for i in range(10)]
+    hue_order = [str(i) for i in range(NUM_CLUSTERS)]
     plot = sns.scatterplot(x=tsne_matrix[:,0],
                            y=tsne_matrix[:,1],
                            hue=clusters_as_strs,
                            hue_order=hue_order,
                            palette="Set2")
 
-    # moving legend - https://www.statology.org/seaborn-legend-outside/
-    plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=5)
+    plt.legend(loc='lower left', title="Cluster")
+    plt.title("2D t-SNE Cluster Visualization")
     plt.savefig(f"{PATH}/tsne_cluster_viz.png")
