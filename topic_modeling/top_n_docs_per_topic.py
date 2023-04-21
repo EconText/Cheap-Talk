@@ -11,6 +11,7 @@ and NUM_DOCS is the number of top documents to find for each topic.
 """
 import sys
 import pickle
+import csv
 import pandas as pd
 import numpy as np
 
@@ -42,33 +43,18 @@ if __name__ == "__main__":
     ###########################################
     # CREATE CSV OF TOP N DOCUMENTS PER TOPIC #
     ###########################################
-    # The final CSV will be created from a DataFrame that is the result of concatenating together
-    # 4 DataFrames (one for each of the top n per topic of the following:
-    # document number, company CSV filename, tweet id, and tweet text).
-    # Because in the top n documents per topic, each document in our model is identified by a document number
-    # that corresponds to some tweet with some tweet id in some company CSV in our DATA_FOLDER.
-    # And the tweet text is the actual text of the document itself.
-
     # Initialize lists of lists to represent the top n per topic of the following:
-    # document number, company CSV filename, tweet id, and tweet text.
-    # For example, the ith inner list of doc_num_rows will correspond to topic i
-    # and contain the top n document numbers (with the top document coming first) for topic i. 
-    # And the 0th element of the ith inner list of doc_num_rows corresponds to the same document
-    # as the 0th element of the ith inner list of comp_csv_rows, tweet_id_rows, and tweet_text_rows.
-    doc_num_rows = []
-    comp_csv_rows = []
-    tweet_id_rows = []
-    tweet_text_rows = []
+    # topic, rank, document number, topic vs. document probability, company CSV filename, tweet id, and tweet text.
+    # Because each document in our model is identified by a document number
+    # that corresponds to some tweet with some tweet id in some company CSV in our DATA_FOLDER.
+    # The tweet text is the actual text of the document itself.
+    # And each topic-document pair has a probability from the topics vs. documents probabilities matrix.
+    # Each inner list will correspond to one row of the final CSV.
+    rows = []
     
     # For each topic...
     for topic_num in range(NUM_TOPICS):
         print(f"Getting top {NUM_DOCS} documents for topic {topic_num}")
-
-        # Construct the four inner lists needed: doc_num_row, comp_csv_row, tweet_id_row, and tweet_text_row.
-        doc_num_row = []
-        comp_csv_row = []
-        tweet_id_row = []
-        tweet_text_row = []
 
         # For this topic, get the probabilities for all documents.
         topic_doc_probs = matrix_topics_docs[topic_num]
@@ -82,6 +68,7 @@ if __name__ == "__main__":
         top_n_topic_docs = sorted_topic_docs[:NUM_DOCS]
         
         # For each of the top n documents, use its document number to...
+        rank = 1
         for doc_num, probability in top_n_topic_docs:
             # get the company CSV filename and tweet ID
             comp_csv, tweet_id = doc_num_to_comp_tweet_id_tuple_map[doc_num]
@@ -92,41 +79,14 @@ if __name__ == "__main__":
             tweet_text_no_newlines = tweet_text.replace("\n", " ")
             tweet_text_without_extra_spaces = " ".join(tweet_text_no_newlines.split())
             
-            # and add the document's information to the appropriate inner list.
-            doc_num_row.append(doc_num)
-            comp_csv_row.append(comp_csv)
-            tweet_id_row.append(tweet_id)
-            tweet_text_row.append(tweet_text_without_extra_spaces)
-        
-        # Add each inner list for this topic to the appropriate data structure
-        # tracking the overall top n documents per topic.
-        doc_num_rows.append(doc_num_row)
-        comp_csv_rows.append(comp_csv_row)
-        tweet_id_rows.append(tweet_id_row)
-        tweet_text_rows.append(tweet_text_row)
-    
-    # Now that the four lists of lists have been constructed, we can convert each list of lists to a DataFrame.
-    # Must append different strings to column names, because otherwise, we would have duplicate column names after concatenating the 4 DataFrames together later,
-    # and you cannot reindex on a DataFrame with duplicate column names.
-    # Each DataFrame will have the topics as rows. 
-    doc_num_df = pd.DataFrame(doc_num_rows, index=[f"{topic_num}_doc_num" for topic_num in range(NUM_TOPICS)])
-    comp_csv_df = pd.DataFrame(comp_csv_rows, index=[f"{topic_num}_comp_csv" for topic_num in range(NUM_TOPICS)])
-    tweet_id_df = pd.DataFrame(tweet_id_rows, index=[f"{topic_num}_tweet_id" for topic_num in range(NUM_TOPICS)])
-    tweet_text_df = pd.DataFrame(tweet_text_rows, index=[f"{topic_num}_tweet_text" for topic_num in range(NUM_TOPICS)])
+            # and encapsulate the document's information in an inner list.
+            row = [topic_num, rank, doc_num, probability, comp_csv, tweet_id, tweet_text_without_extra_spaces]
+            rows.append(row)
 
-    # Transpose the DataFrames so the topics become the columns.    
-    doc_num_df_transposed = doc_num_df.transpose()
-    comp_csv_df_transposed = comp_csv_df.transpose()
-    tweet_id_df_transposed = tweet_id_df.transpose()
-    tweet_text_df_transposed = tweet_text_df.transpose()
-    
-    # Combine the 4 DataFrames by concatenating the DataFrames along the axis of columns.
-    # The result will be all the columns of doc_num_df_transposed first, then all the columns of comp_csv_df_transposed next,
-    # then all the columsn of tweet_id_df_transposed, and finally, all the columns of tweet_text_df_transposed.
-    top_n_docs_per_topic_df = pd.concat([doc_num_df_transposed, comp_csv_df_transposed, tweet_id_df_transposed, tweet_text_df_transposed], axis=1)
-
-    # Reorder the columns of the DataFrame so that the doc_num, comp_csv, tweet_id, and tweet_text columns pertaining to the same topic are adjacent to each other.
-    top_n_docs_per_topic_df = top_n_docs_per_topic_df.reindex(sorted(top_n_docs_per_topic_df.columns), axis=1)
+            rank += 1
 
     # Save DataFrame as a CSV!
-    top_n_docs_per_topic_df.to_csv(f"{MODEL_FOLDER}/top_{NUM_DOCS}_docs_per_topic.csv")
+    with open(f"{MODEL_FOLDER}/top_{NUM_DOCS}_docs_per_topic.csv", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["topic", "rank", "doc_num", "probability", "comp_csv", "tweet_id", "tweet_text"])
+        writer.writerows(rows)
