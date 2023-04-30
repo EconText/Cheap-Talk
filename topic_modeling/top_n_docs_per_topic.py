@@ -5,8 +5,9 @@ trained by the biterm_topic_modeling.py script.
 
 To run script:
 ipython
-run top_n_docs_per_topic.py [NUM_TOPICS] [NUM_DOCS]
-where NUM_TOPICS is a string representing the number of topics in the model to analyze
+run top_n_docs_per_topic.py [DATA_FOLDER] [NUM_TOPICS] [NUM_DOCS]
+where DATA_FOLDER is a string representing the path to the folder containing tweet data,
+NUM_TOPICS is a string representing the number of topics in the model to analyze
 and NUM_DOCS is the number of top documents to find for each topic.
 """
 import sys
@@ -16,13 +17,13 @@ import pandas as pd
 import numpy as np
 
 if __name__ == "__main__":
-    DATA_FOLDER = "../data/tweets/ten_years_en"
 
     ###############################
     # READ COMMAND LINE ARGUMENTS #
     ###############################
-    NUM_TOPICS = int(sys.argv[1])
-    NUM_DOCS = int(sys.argv[2])
+    DATA_FOLDER = sys.argv[1]
+    NUM_TOPICS = int(sys.argv[2])
+    NUM_DOCS = int(sys.argv[3])
 
     MODEL_FOLDER = f"{NUM_TOPICS}_topics_model"
 

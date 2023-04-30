@@ -1,11 +1,12 @@
 """
 This script trains a biterm topic model on the S&P 500 tweets located
-in the ../data/tweets/ten_years_en folder, treating each tweet as a single document.
+in the given DATA_FOLDER, treating each tweet as a single document.
 
 To run script:
 ipython
-run biterm_topic_modeling.py [NUM_TOPICS] [MODEL_TYPE]
-where NUM_TOPICS is a string representing the number of topics to train the model for,
+run biterm_topic_modeling.py [DATA_FOLDER] [NUM_TOPICS] [MODEL_TYPE]
+where DATA_FOLDER is a string representing the path to the folder containing tweet data,
+NUM_TOPICS is a string representing the number of topics to train the model for,
 and MODEL_TYPE is "new" to train a new model or "presaved" to load a presaved model.
 """
 import bitermplus as btm
@@ -20,8 +21,9 @@ if __name__ == "__main__":
     ###############################
     # READ COMMAND LINE ARGUMENTS #
     ###############################
-    NUM_TOPICS = int(sys.argv[1])
-    MODEL_TYPE = sys.argv[2].lower()
+    DATA_FOLDER = sys.argv[1]
+    NUM_TOPICS = int(sys.argv[2])
+    MODEL_TYPE = sys.argv[3].lower()
 
     MODEL_FOLDER = f"{NUM_TOPICS}_topics_model"
 
@@ -41,15 +43,14 @@ if __name__ == "__main__":
         # And save the same information in a doc_num_to_comp_tweet_id_tuple_map dictionary
         # that maps the other way: document number to (company CSV filename, tweet ID) tuple
         # (needed for top n documents per topic analysis).
-        data_folder = "../data/tweets/ten_years_en"
         texts = []
         comp_to_tweet_id_to_doc_num_map = {}
         doc_num_to_comp_tweet_id_tuple_map = {}
         doc_num = 0
-        for comp_csv in os.listdir(data_folder):
+        for comp_csv in os.listdir(DATA_FOLDER):
             print(comp_csv)
             print(f"Reading tweets from CSV: {comp_csv}")
-            df = pd.read_csv(f"{data_folder}/{comp_csv}", lineterminator='\n')
+            df = pd.read_csv(f"{DATA_FOLDER}/{comp_csv}", lineterminator='\n')
             texts += df['text'].str.strip().tolist()
 
             comp_to_tweet_id_to_doc_num_map[comp_csv] = {}
