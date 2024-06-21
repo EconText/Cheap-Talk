@@ -15,13 +15,16 @@ ipython
 run tsne_cluster_viz.py [NUM_TOPICS] [NUM_CLUSTERS]
 where NUM_TOPICS is a string representing the number of topics in the model to analyze
 and NUM_CLUSTERS is the number of clusters in the clustering model to analyze.
+
+e.g. run tsne_cluster_viz.py 50 5
 """
-import pickle
-import sys
-import pandas as pd
-from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
+import pandas as pd
+import pickle
 import seaborn as sns
+import sys
+
+from sklearn.manifold import TSNE
 
 if __name__ == "__main__":
     ###############################
@@ -88,4 +91,4 @@ if __name__ == "__main__":
 
     plt.legend(loc='lower left', title="Cluster")
     plt.title("2D t-SNE Cluster Visualization")
-    plt.savefig(f"{PATH}/tsne_cluster_viz.png")
+    plt.savefig(f"{PATH}/tsne_cluster_viz.png", dpi=400)
